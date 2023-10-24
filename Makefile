@@ -13,7 +13,7 @@ BUILD_DIR = build
 
 # Check Windows
 ifdef OS
-	RM = del /q
+	RM = del
 	MKDIR = mkdir
 else
 	RM = rm -f
