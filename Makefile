@@ -5,17 +5,21 @@
 # the Main program
 MAIN = main
 
-# the gnatmake
+# gnatmake
 GNATMAKE = gnatmake
+
+# build directory
+BUILD_DIR = build
 
 #-----------------------------------------------------------------------------
 # Main rule
 
 all :   $(MAIN).adb
-	$(GNATMAKE) $(MAIN)
+	mkdir -p $(BUILD_DIR)
+	cd $(BUILD_DIR); $(GNATMAKE) ../$(MAIN)
 
 clean : force
-	del -f *.o *.nm *.ali b~*.* *.s *~ $(MAIN) *.map
+	rm -rf $(BUILD_DIR)
 
 force :
 
