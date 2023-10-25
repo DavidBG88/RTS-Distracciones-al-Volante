@@ -14,12 +14,88 @@ package body add is
    ----------------------------------------------------------------------
    ------------- procedure exported
    ----------------------------------------------------------------------
+
    procedure Background is
    begin
       loop
          null;
       end loop;
    end Background;
+
+   ----------------------------------------------------------------------
+   ------------- declaration of protected objects
+   ----------------------------------------------------------------------
+
+   protected Sintomas is
+      procedure Run_Cabeza;
+      procedure Run_Volante;
+   private
+      Cabeza_Inclinada : Boolean := False;
+
+      Distancia_Insegura   : Boolean := False;
+      Distancia_Imprudente : Boolean := False;
+      Distancia_Colision   : Boolean := False;
+   end Sintomas;
+
+   ----------------------------------------------------------------------
+   ------------- definition of protected objects
+   ----------------------------------------------------------------------
+
+   protected body Sintomas is
+      procedure Run_Cabeza is
+         Head_Position     : HeadPosition_Samples_Type;
+         Wheel_Position    : Steering_Samples_Type;
+         Current_X_Danger  : Boolean := False;
+         Current_Y_Danger  : Boolean := False;
+         Previous_X_Danger : Boolean := False;
+         Previous_Y_Danger : Boolean := False;
+      begin
+         loop
+            Reading_HeadPosition (Head_Position);
+            Reading_Steering (Wheel_Position);
+
+            Current_X_Danger := abs (Head_Position (x)) > 30;
+            Current_Y_Danger := abs (Head_Position (y)) > 30;
+
+            if (Current_X_Danger and Previous_X_Danger) or
+              (Current_Y_Danger and Previous_Y_Danger and
+               abs (Wheel_Position) <= 30 and
+               Number_Sign (Wheel_Position) /= Number_Sign (HeadPosition (y)))
+            then
+               Cabeza_Inclinada := True;
+            end if;
+
+            Previous_X_Danger := Current_X_Danger;
+            Previous_Y_Danger := Current_Y_Danger;
+         end loop;
+      end Run_Cabeza;
+
+      procedure Run_Volante is
+         Distance       : Distance_Samples_Type;
+         Velocity       : Speed_Samples_Type;
+         SecureVelocity : Integer := (Velocity / 10) * (Velocity / 10);
+      begin
+         loop
+            if Distance < SecureVelocity / 3 then
+               Distancia_Colision   := True;
+               Distancia_Imprudente := False;
+               Distancia_Insegura   := False;
+            elsif Distance < SecureVelocity / 2 then
+               Distancia_Colision   := False;
+               Distancia_Imprudente := True;
+               Distancia_Insegura   := False;
+            elsif Distance < SecureVelocity then
+               Distancia_Colision   := False;
+               Distancia_Imprudente := False;
+               Distancia_Insegura   := True;
+            else
+               Distancia_Colision   := False;
+               Distancia_Imprudente := False;
+               Distancia_Insegura   := False;
+            end if;
+         end loop;
+      end Run_Volante;
+   end Sintomas;
 
    -----------------------------------------------------------------------
    ------------- declaration of tasks
@@ -45,122 +121,24 @@ package body add is
    -----------------------------------------------------------------------
 
    task body Cabeza is
-      task_name   : constant String  := "Cabeza";
-      task_period : constant Natural := 400;
-
-      Head_Position     : HeadPosition_Samples_Type;
-      Wheel_Position    : Steering_Samples_Type;
-      Current_X_Danger  : Boolean := False;
-      Current_Y_Danger  : Boolean := False;
-      Previous_X_Danger : Boolean := False;
-      Previous_Y_Danger : Boolean := False;
+      Task_Name   : constant String  := "Cabeza";
+      Task_Period : constant Natural := 400;
    begin
-      loop
-         Starting_Notice (task_name);
-
-         Reading_HeadPosition (Head_Position);
-         Reading_Steering (Wheel_Position);
-
-         Current_X_Danger := abs (Head_Position (x)) > 30;
-         Current_Y_Danger := abs (Head_Position (y)) > 30;
-
-         if Current_X_Danger and Previous_X_Danger then
-         -- Alerta cabeza inclinada
-         end if;
-
-         if Current_X_Danger and Previous_X_Danger or
-           (Current_Y_Danger and Previous_Y_Danger and
-            abs (Wheel_Position) <= 30 and
-            Number_Sign (Wheel_Position) /= Number_Sign (HeadPosition (y)))
-         then
-         -- Alerta cabeza inclinada
-         end if;
-
-         Previous_X_Danger := Current_X_Danger;
-         Previous_Y_Danger := Current_Y_Danger;
-
-         Finishing_Notice (task_name);
-
-         delay (task_period);
-      end loop;
+      Starting_Notice (Task_Name);
+      Sintomas.Run_Cabeza;
+      Finishing_Notice (Task_Name);
+      delay (Task_Period);
    end Cabeza;
 
-   task body Distancia is
-      task_name : constant String := "Distancia";
-   begin
-      loop
-         Starting_Notice (task_name);
-         Finishing_Notice (task_name);
-
-         -- Delay here
-      end loop;
-   end Distancia;
-
    task body Volante is
-      task_name   : constant String  := "Distancia";
+      task_name   : constant String  := "Volante";
       task_period : constant Natural := 300;
-
-      Distance       : Distance_Samples_Type;
-      Velocity       : Speed_Samples_Type;
-      SecureVelocity : Integer := (Velocity / 10) * (Velocity / 10);
-
-      Distance_Low_Danger    : Boolean := False; --Distancia insegura
-      Distance_Medium_Danger : Boolean := False; --Distancia imprudente
-      Distance_High_Danger   : Boolean := False; --Peligro colision
-
    begin
-      loop
-         Starting_Notice (task_name);
-         Finishing_Notice (task_name);
-
-         if (Distance < SecureVelocity / 3) then
-            Distance_High_Danger := True;
-         elsif (Distance < SecureVelocity / 2) then
-            Distance_Medium_Danger := True;
-         elsif (Distance < SecureVelocity) then
-            Distance_Low_Danger := True;
-         else
-            Distance_High_Danger   := False;
-            Distance_Medium_Danger := False;
-            Distance_Low_Danger    := False;
-         end if;
-
-         delay (task_period);
-      end loop;
+      Starting_Notice (task_name);
+      Sintomas.Run_Volante;
+      Finishing_Notice (task_name);
+      delay (Task_Period);
    end Volante;
-
-   task body Riesgos is
-      task_name : constant String := "Distancia";
-   begin
-      loop
-         Starting_Notice (task_name);
-         Finishing_Notice (task_name);
-
-         -- Delay here
-      end loop;
-   end Riesgos;
-
-   task body Display is
-      task_name : constant String := "Distancia";
-   begin
-      loop
-         Starting_Notice (task_name);
-         Finishing_Notice (task_name);
-
-         -- Delay here
-      end loop;
-   end Display;
-
-   task body Modo is
-      task_name : constant String := "Distancia";
-   begin
-      loop
-         Starting_Notice (task_name);
-         Finishing_Notice (task_name);
-
-         -- Delay here
-      end loop;
-   end Modo;
 
    -----------------------------------------------------------------------
    ------------- body of auxiliary methods
