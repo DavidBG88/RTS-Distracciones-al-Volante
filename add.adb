@@ -11,28 +11,6 @@ with devices; use devices;
 -- with Pulse_Interrupt; use Pulse_Interrupt;
 
 package body add is
-   procedure Starting_Notice (task_name : in String) is
-   begin
-      Put ("Comenzando tarea " & task_name);
-   end Starting_Notice;
-
-   procedure Finishing_Notice (task_name : in String) is
-   begin
-      Put ("Finalizando tarea " & task_name);
-   end Finishing_Notice;
-
-   function Number_Sign (Number : Integer) return Integer is
-      Sign : Integer := 0;
-   begin
-      if (Number > 0) then
-         Sign := 1;
-      elsif Number < 0 then
-         Sign := -1;
-      end if;
-
-      return Sign;
-   end Number_Sign;
-
    ----------------------------------------------------------------------
    ------------- procedure exported
    ----------------------------------------------------------------------
@@ -42,7 +20,6 @@ package body add is
          null;
       end loop;
    end Background;
-   ----------------------------------------------------------------------
 
    -----------------------------------------------------------------------
    ------------- declaration of tasks
@@ -54,6 +31,14 @@ package body add is
    task Riesgos;
    task Display;
    task Modo;
+
+   -----------------------------------------------------------------------
+   ------------- declaration auxiliary methods
+   -----------------------------------------------------------------------
+
+   procedure Starting_Notice (Task_Name : in String);
+   procedure Finishing_Notice (Task_Name : in String);
+   function Number_Sign (Number : Integer) return Integer;
 
    -----------------------------------------------------------------------
    ------------- body of tasks
@@ -140,7 +125,6 @@ package body add is
             Distance_Low_Danger    := False;
          end if;
 
-         -- Delay here
          delay (task_period);
       end loop;
    end Volante;
@@ -177,6 +161,32 @@ package body add is
          -- Delay here
       end loop;
    end Modo;
+
+   -----------------------------------------------------------------------
+   ------------- body of auxiliary methods
+   -----------------------------------------------------------------------
+
+   procedure Starting_Notice (task_name : in String) is
+   begin
+      Put ("Comenzando tarea " & task_name);
+   end Starting_Notice;
+
+   procedure Finishing_Notice (task_name : in String) is
+   begin
+      Put ("Finalizando tarea " & task_name);
+   end Finishing_Notice;
+
+   function Number_Sign (Number : Integer) return Integer is
+      Sign : Integer := 0;
+   begin
+      if (Number > 0) then
+         Sign := 1;
+      elsif Number < 0 then
+         Sign := -1;
+      end if;
+
+      return Sign;
+   end Number_Sign;
 
    ----------------------------------------------------------------------
    ------------- procedure para probar los dispositivos
