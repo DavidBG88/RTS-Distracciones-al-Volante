@@ -92,7 +92,7 @@ task body Volante is
          
       Distance: Distance_Samples_Type;
       Velocity: Speed_Samples_Type;
-      SecureVelocity: float;
+      SecureVelocity: Integer := (Velocity/10)*(Velocity/10);
 
       Distance_Low_Danger: Boolean := False;
       Distance_Medium_Danger: Boolean := False;
