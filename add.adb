@@ -11,25 +11,26 @@ with devices; use devices;
 -- with Pulse_Interrupt; use Pulse_Interrupt;
 
 package body add is
-   procedure Starting_Notice(task_name: in String) is
+   procedure Starting_Notice (task_name : in String) is
    begin
-      Put("Comenzando tarea " & task_name);
+      Put ("Comenzando tarea " & task_name);
    end Starting_Notice;
 
-   procedure Finishing_Notice(task_name: in String) is
+   procedure Finishing_Notice (task_name : in String) is
    begin
-      Put("Finalizando tarea " & task_name);
-   end Starting_Notice;
+      Put ("Finalizando tarea " & task_name);
+   end Finishing_Notice;
 
-   function Number_Sign(Number: Integer) return Integer is
+   function Number_Sign (Number : Integer) return Integer is
+      Sign : Integer := 0;
    begin
-      if (number > 0) then 
-         return 1;
-      else if number < 0 then
-         return -1;
+      if (Number > 0) then
+         Sign := 1;
+      elsif Number < 0 then
+         Sign := -1;
       end if;
 
-      return 0;
+      return Sign;
    end Number_Sign;
 
    ----------------------------------------------------------------------
@@ -59,41 +60,43 @@ package body add is
    -----------------------------------------------------------------------
 
    task body Cabeza is
-      task_name : constant String := "Cabeza";
+      task_name   : constant String  := "Cabeza";
       task_period : constant Natural := 400;
-         
-      Head_Position: HeadPosition_Samples_Type;
-      Wheel_Position: Steering_Samples_Type;
-      Current_X_Danger: Boolean := False;
-      Current_Y_Danger: Boolean := False;
-      Previous_X_Danger: Boolean := False;
-      Previous_Y_Danger: Boolean := False;
+
+      Head_Position     : HeadPosition_Samples_Type;
+      Wheel_Position    : Steering_Samples_Type;
+      Current_X_Danger  : Boolean := False;
+      Current_Y_Danger  : Boolean := False;
+      Previous_X_Danger : Boolean := False;
+      Previous_Y_Danger : Boolean := False;
    begin
       loop
-         Starting_Notice(task_name);
+         Starting_Notice (task_name);
 
-         Reading_HeadPosition(Head_Position);
-         Reading_Steering(Wheel_Position);
+         Reading_HeadPosition (Head_Position);
+         Reading_Steering (Wheel_Position);
 
-         Current_X_Danger := Abs(Head_Position(x)) > 30;
-         Current_Y_Danger := Abs(Head_Position(y)) > 30;
+         Current_X_Danger := abs (Head_Position (x)) > 30;
+         Current_Y_Danger := abs (Head_Position (y)) > 30;
 
          if Current_X_Danger and Previous_X_Danger then
-            -- Alerta
+         -- Alerta cabeza inclinada
          end if;
 
-         if Current_Y_Danger and Previous_Y_Danger 
-               and Number_Sign(Wheel_Position) = Number_Sign(HeadPosition(y)) then
-            -- Alerta
+         if Current_X_Danger and Previous_X_Danger or
+           (Current_Y_Danger and Previous_Y_Danger and
+            abs (Wheel_Position) <= 30 and
+            Number_Sign (Wheel_Position) /= Number_Sign (HeadPosition (y)))
+         then
+         -- Alerta cabeza inclinada
          end if;
 
-         Previous_X_danger := Current_X_Danger;
-         Previous_Y_danger := Current_Y_Danger;
+         Previous_X_Danger := Current_X_Danger;
+         Previous_Y_Danger := Current_Y_Danger;
 
-         Finishing_Notice(task_name);
+         Finishing_Notice (task_name);
 
-         -- Delay here
-         delay(task_period);
+         delay (task_period);
       end loop;
    end Cabeza;
 
@@ -101,52 +104,57 @@ package body add is
       task_name : constant String := "Distancia";
    begin
       loop
-         Starting_Notice(task_name);
-         Finishing_Notice(task_name);
+         Starting_Notice (task_name);
+         Finishing_Notice (task_name);
 
          -- Delay here
       end loop;
-   end Cabeza;
+   end Distancia;
 
-task body Volante is
-      task_name : constant String := "Distancia";
+   task body Volante is
+      task_name   : constant String  := "Distancia";
       task_period : constant Natural := 300;
-         
-      Distance: Distance_Samples_Type;
-      Velocity: Speed_Samples_Type;
-      SecureVelocity: Integer := (Velocity/10)*(Velocity/10);
 
-      Distance_Low_Danger: Boolean := False;
-      Distance_Medium_Danger: Boolean := False;
-      Distance_High_Danger: Boolean := False;
+      Distance       : Distance_Samples_Type;
+      Velocity       : Speed_Samples_Type;
+      SecureVelocity : Integer := (Velocity / 10) * (Velocity / 10);
+
+      Distance_Low_Danger    : Boolean := False; --Distancia insegura
+      Distance_Medium_Danger : Boolean := False; --Distancia imprudente
+      Distance_High_Danger   : Boolean := False; --Peligro colision
 
    begin
       loop
-         Starting_Notice(task_name);
-         Finishing_Notice(task_name);
+         Starting_Notice (task_name);
+         Finishing_Notice (task_name);
 
-         if(Distance < SecureVelocity/3) then Distance_High_Danger := True;
-         else if(Distance < SecureVelocity/2) then Distance_Medium_Danger := True;
-         else if(Distance < SecureVelocity) then Distance_Low_Danger := True;
-         else 
-            Distance_High_Danger := False; Distance_Medium_Danger := False; Distance_Low_Danger := False;
+         if (Distance < SecureVelocity / 3) then
+            Distance_High_Danger := True;
+         elsif (Distance < SecureVelocity / 2) then
+            Distance_Medium_Danger := True;
+         elsif (Distance < SecureVelocity) then
+            Distance_Low_Danger := True;
+         else
+            Distance_High_Danger   := False;
+            Distance_Medium_Danger := False;
+            Distance_Low_Danger    := False;
          end if;
 
          -- Delay here
-         delay(task_period);
+         delay (task_period);
       end loop;
-   end Cabeza;
+   end Volante;
 
    task body Riesgos is
       task_name : constant String := "Distancia";
    begin
       loop
-         Starting_Notice(task_name);
-         Finishing_Notice(task_name);
+         Starting_Notice (task_name);
+         Finishing_Notice (task_name);
 
          -- Delay here
       end loop;
-   end Cabeza;
+   end Riesgos;
 
    task body Display is
       task_name : constant String := "Distancia";
@@ -157,7 +165,7 @@ task body Volante is
 
          -- Delay here
       end loop;
-   end Cabeza;
+   end Display;
 
    task body Modo is
       task_name : constant String := "Distancia";
@@ -168,7 +176,7 @@ task body Volante is
 
          -- Delay here
       end loop;
-   end Cabeza;
+   end Modo;
 
    ----------------------------------------------------------------------
    ------------- procedure para probar los dispositivos
