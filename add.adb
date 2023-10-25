@@ -21,6 +21,17 @@ package body add is
       Put("Finalizando tarea " & task_name);
    end Starting_Notice;
 
+   function Number_Sign(Number: Integer) return Integer is
+   begin
+      if (number > 0) then 
+         return 1;
+      else if number < 0 then
+         return -1;
+      end if;
+
+      return 0;
+   end Number_Sign;
+
    ----------------------------------------------------------------------
    ------------- procedure exported
    ----------------------------------------------------------------------
@@ -52,6 +63,9 @@ package body add is
       task_period : constant Natural := 400;
          
       Head_Position: HeadPosition_Samples_Type;
+      Wheel_Position: Steering_Samples_Type;
+      Current_X_Danger: Boolean := False;
+      Current_Y_Danger: Boolean := False;
       Previous_X_Danger: Boolean := False;
       Previous_Y_Danger: Boolean := False;
    begin
@@ -59,14 +73,22 @@ package body add is
          Starting_Notice(task_name);
 
          Reading_HeadPosition(Head_Position);
+         Reading_Steering(Wheel_Position);
 
-         if Abs(Head_Position(x)) > 30 then
-            if (Previous_X_Danger) then
-               -- Peligro
-            end if;
+         Current_X_Danger := Abs(Head_Position(x)) > 30;
+         Current_Y_Danger := Abs(Head_Position(y)) > 30;
+
+         if Current_X_Danger and Previous_X_Danger then
+            -- Alerta
+         end if;
+
+         if Current_Y_Danger and Previous_Y_Danger 
+               and Number_Sign(Wheel_Position) = Number_Sign(HeadPosition(y)) then
+            -- Alerta
          end if;
 
          Previous_X_danger := Current_X_Danger;
+         Previous_Y_danger := Current_Y_Danger;
 
          Finishing_Notice(task_name);
 
