@@ -88,12 +88,30 @@ package body add is
 
 task body Volante is
       task_name : constant String := "Distancia";
+      task_period : constant Natural := 300;
+         
+      Distance: Distance_Samples_Type;
+      Velocity: Speed_Samples_Type;
+      SecureVelocity: float;
+
+      Distance_Low_Danger: Boolean := False;
+      Distance_Medium_Danger: Boolean := False;
+      Distance_High_Danger: Boolean := False;
+
    begin
       loop
          Starting_Notice(task_name);
          Finishing_Notice(task_name);
 
+         if(Distance < SecureVelocity/3) then Distance_High_Danger := True;
+         else if(Distance < SecureVelocity/2) then Distance_Medium_Danger := True;
+         else if(Distance < SecureVelocity) then Distance_Low_Danger := True;
+         else 
+            Distance_High_Danger := False; Distance_Medium_Danger := False; Distance_Low_Danger := False;
+         end if;
+
          -- Delay here
+         delay(task_period);
       end loop;
    end Cabeza;
 
