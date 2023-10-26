@@ -43,6 +43,10 @@ package body add is
    procedure Riesgo_Distancia
      (Velocidad : in Speed_Samples_Type; Distancia : in Distance_Samples_Type;
       Risk      :    out Sintoma_Distancia_Type);
+   procedure Riesgo_Volante
+     (Prev_Steering_Angle : in Steering_Samples_Type;
+      Steering_Angle : in Steering_Samples_Type; Speed : Speed_Samples_Type;
+      Prev_V_Risk : in Boolean; V_Risk : out Boolean; Risk : out Boolean);
 
    ----------------------------------------------------------------------
    ------------- declaration of protected objects
@@ -51,9 +55,9 @@ package body add is
    protected Sintomas is
       procedure Update_Cabeza (Risk : Boolean);
       procedure Update_Distancia (Risk : Sintoma_Distancia_Type);
-      procedure Run_Riesgos;
+      -- procedure Run_Riesgos;
       procedure Update_Volante (Risk : Boolean);
-      procedure Run_Display;
+      -- procedure Run_Display;
    private
       Riesgo_Cabeza    : Boolean                := False;
       Riesgo_Distancia : Sintoma_Distancia_Type := Segura;
@@ -63,8 +67,8 @@ package body add is
    protected Medidas is
       procedure Update_Distancia (Distancia : in Distance_Samples_Type);
       procedure Update_Velocidad (Velocidad : in Speed_Samples_Type);
-      procedure Run_Riesgos;
-      procedure Run_Display;
+      -- procedure Run_Riesgos;
+      -- procedure Run_Display;
    private
       Distancia : Distance_Samples_Type := 0;
       Velocidad : Speed_Samples_Type    := 0;
@@ -140,6 +144,8 @@ package body add is
          Riesgo_Cabeza
            (Head_Position, Steering_Angle, Prev_X_Risk, Prev_Y_Risk, X_Risk,
             Y_Risk, Head_Risk);
+         Prev_X_Risk := X_Risk;
+         Prev_Y_Risk := Y_Risk;
          Sintomas.Update_Cabeza (Head_Risk);
 
          Finishing_Notice (Task_Name);
@@ -148,81 +154,104 @@ package body add is
    end Cabeza;
 
    task body Distancia is
-      task_name   : constant String   := "Distancia";
-      task_period : constant Duration := 0.300;
+      Task_Name   : constant String   := "Distancia";
+      Task_Period : constant Duration := 0.300;
 
       Distance_Risk : Sintoma_Distancia_Type := Segura;
       Distance      : Distance_Samples_Type  := 0;
       Speed         : Speed_Samples_Type     := 0;
    begin
       loop
-         Starting_Notice (task_name);
+         Starting_Notice (Task_Name);
 
          Reading_Speed (Speed);
          Reading_Distance (Distance);
 
          Riesgo_Distancia (Speed, Distance, Distance_Risk);
          Sintomas.Update_Distancia (Distance_Risk);
+         Medidas.Update_Distancia (Distance);
+         Medidas.Update_Velocidad (Speed);
 
-         -- Medidas.Update_Distancia;
-         -- Medidas.Update_Velocidad;
-
-         Finishing_Notice (task_name);
-         delay (task_period);
+         Finishing_Notice (Task_Name);
+         delay (Task_Period);
       end loop;
    end Distancia;
 
    task body Volante is
-      task_name   : constant String   := "Volante";
-      task_period : constant Duration := 0.350;
+      Task_Name   : constant String   := "Volante";
+      Task_Period : constant Duration := 0.350;
+
+      Risk                : Boolean               := False;
+      V_Risk              : Boolean               := False;
+      Prev_V_Risk         : Boolean               := False;
+      Steering_Angle      : Steering_Samples_Type := 0;
+      Prev_Steering_Angle : Steering_Samples_Type := 0;
+      Speed               : Speed_Samples_Type    := 0;
    begin
       loop
-         Starting_Notice (task_name);
-         -- Sintomas.Update_Volante;
-         Finishing_Notice (task_name);
-         delay (task_period);
+         Starting_Notice (Task_Name);
+
+         Reading_Steering (Steering_Angle);
+         Riesgo_Volante
+           (Prev_Steering_Angle, Steering_Angle, Speed, Prev_V_Risk, V_Risk,
+            Risk);
+         Prev_V_Risk         := V_Risk;
+         Prev_Steering_Angle := Steering_Angle;
+         Sintomas.Update_Volante (Risk);
+
+         Finishing_Notice (Task_Name);
+         delay (Task_Period);
       end loop;
    end Volante;
 
    task body Riesgos is
-      task_name   : constant String   := "Riesgos";
-      task_period : constant Duration := 0.150;
+      Task_Name   : constant String   := "Riesgos";
+      Task_Period : constant Duration := 0.150;
    begin
       loop
-         Starting_Notice (task_name);
+         Starting_Notice (Task_Name);
 
          -- Task code here
 
-         Finishing_Notice (task_name);
-         delay (task_period);
+         Finishing_Notice (Task_Name);
+         delay (Task_Period);
       end loop;
    end Riesgos;
 
    task body Display is
-      task_name   : constant String   := "Display";
-      task_period : constant Duration := 1.000;
+      Task_Name   : constant String   := "Display";
+      Task_Period : constant Duration := 1.000;
    begin
       loop
-         Starting_Notice (task_name);
+         Starting_Notice (Task_Name);
 
-         -- Task code here
+         Put_Line ("Distancia: " & Medidas.Distancia);
+         Put_Line ("Velocidad: " & Medidas.Velocidad);
+         Put_Line ("Sintomas: ");
+         Put_Line
+           ("\tCabeza:   " &
+            (if Sintomas.Riesgo_Cabeza then "RIESGO" else "OK"));
+         Put_Line ("\Distancia: " & Sintomas.Riesgo_Distancia);
+         Put_Line
+           ("\Volante:   " &
+            (if Sintomas.Riesgo_Volante then "RIESGO" else "OK"));
 
-         Finishing_Notice (task_name);
-         delay (task_period);
+         Finishing_Notice (Task_Name);
+         delay (Task_Period);
       end loop;
    end Display;
 
    task body Modo is
-      task_name   : constant String   := "Modo";
-      task_period : constant Duration := 0.3;
+      Task_Name   : constant String   := "Modo";
+      Task_Period : constant Duration := 0.3;
    begin
       loop
-         Starting_Notice (task_name);
+         Starting_Notice (Task_Name);
 
          -- Task code here
 
-         Finishing_Notice (task_name);
-         delay (task_period);
+         Finishing_Notice (Task_Name);
+         delay (Task_Period);
       end loop;
    end Modo;
 
@@ -230,14 +259,14 @@ package body add is
    ------------- body of auxiliary methods
    -----------------------------------------------------------------------
 
-   procedure Starting_Notice (task_name : in String) is
+   procedure Starting_Notice (Task_Name : in String) is
    begin
-      Put_Line ("Comenzando tarea " & task_name);
+      Put_Line ("Comenzando tarea " & Task_Name);
    end Starting_Notice;
 
-   procedure Finishing_Notice (task_name : in String) is
+   procedure Finishing_Notice (Task_Name : in String) is
    begin
-      Put_Line ("Finalizando tarea " & task_name);
+      Put_Line ("Finalizando tarea " & Task_Name);
    end Finishing_Notice;
 
    function Number_Sign (Number : Integer) return Integer is
@@ -301,6 +330,19 @@ package body add is
          Risk := Segura;
       end if;
    end Riesgo_Distancia;
+
+   procedure Riesgo_Volante
+     (Prev_Steering_Angle : in Steering_Samples_Type;
+      Steering_Angle : in Steering_Samples_Type; Speed : Speed_Samples_Type;
+      Prev_V_Risk : in Boolean; V_Risk : out Boolean; Risk : out Boolean)
+   is
+      Angle_Diff : Integer := 0;
+   begin
+      Angle_Diff :=
+        abs (Integer (Steering_Angle) - Integer (Prev_Steering_Angle));
+      V_Risk     := Angle_Diff >= 20 and Speed > 40;
+      Risk       := Prev_V_Risk and V_Risk;
+   end Riesgo_Volante;
 
    ----------------------------------------------------------------------
    ------------- procedure para probar los dispositivos
