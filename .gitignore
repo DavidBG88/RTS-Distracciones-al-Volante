@@ -1,2 +1,8 @@
-# Build dir
-build
+*.o
+*.nm 
+*.ali 
+b~*.* 
+*.s 
+*~ 
+main
+*.map
