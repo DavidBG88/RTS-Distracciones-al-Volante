@@ -16,7 +16,7 @@ ifdef OS
 	RM = del
 	MKDIR = mkdir
 else
-	RM = rm -f
+	RM = rm -rf
 	MKDIR = mkdir -p
 endif
 
