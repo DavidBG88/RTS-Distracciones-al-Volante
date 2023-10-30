@@ -55,8 +55,13 @@ package body add is
    protected Sintomas is
       procedure Update_Cabeza (Risk : Boolean);
       procedure Update_Distancia (Risk : Sintoma_Distancia_Type);
-      -- procedure Run_Riesgos;
       procedure Update_Volante (Risk : Boolean);
+
+      function Get_Cabeza return Boolean;
+      function Get_Distancia return Sintoma_Distancia_Type;
+      function Get_Volante return Boolean;
+
+      -- procedure Run_Riesgos;
       -- procedure Run_Display;
    private
       Riesgo_Cabeza    : Boolean                := False;
@@ -67,6 +72,10 @@ package body add is
    protected Medidas is
       procedure Update_Distancia (Distancia : in Distance_Samples_Type);
       procedure Update_Velocidad (Velocidad : in Speed_Samples_Type);
+
+      function Get_Distancia return Distance_Samples_Type;
+      function Get_Velocidad return Speed_Samples_Type;
+
       -- procedure Run_Riesgos;
       -- procedure Run_Display;
    private
@@ -96,6 +105,21 @@ package body add is
       begin
          Riesgo_Volante := Risk;
       end Update_Volante;
+
+      function Get_Cabeza return Boolean is
+      begin
+         return Riesgo_Cabeza;
+      end Get_Cabeza;
+
+      function Get_Distancia return Sintoma_Distancia_Type is
+      begin
+         return Riesgo_Distancia;
+      end Get_Distancia;
+
+      function Get_Volante return Boolean is
+      begin
+         return Riesgo_Volante;
+      end Get_Volante;
    end Sintomas;
 
    protected body Medidas is
@@ -108,6 +132,16 @@ package body add is
       begin
          Medidas.Velocidad := Velocidad;
       end Update_Velocidad;
+
+      function Get_Distancia return Distance_Samples_Type is
+      begin
+         return Medidas.Distancia;
+      end Get_Distancia;
+
+      function Get_Velocidad return Speed_Samples_Type is
+      begin
+         return Medidas.Velocidad;
+      end Get_Velocidad;
    end Medidas;
 
    -----------------------------------------------------------------------
@@ -126,8 +160,10 @@ package body add is
    -----------------------------------------------------------------------
 
    task body Cabeza is
-      Task_Name   : constant String   := "Cabeza";
-      Task_Period : constant Duration := 0.400;
+      -- pragma Priority (System.Priority'First);
+
+      Task_Name   : constant String  := "Cabeza";
+      Task_Period : constant Natural := 400;
 
       Head_Position  : HeadPosition_Samples_Type := (0, 0);
       Steering_Angle : Steering_Samples_Type     := 0;
@@ -149,13 +185,13 @@ package body add is
          Sintomas.Update_Cabeza (Head_Risk);
 
          Finishing_Notice (Task_Name);
-         delay (Task_Period);
+         delay until (Clock + Milliseconds (Task_Period));
       end loop;
    end Cabeza;
 
    task body Distancia is
-      Task_Name   : constant String   := "Distancia";
-      Task_Period : constant Duration := 0.300;
+      Task_Name   : constant String  := "Distancia";
+      Task_Period : constant Natural := 300;
 
       Distance_Risk : Sintoma_Distancia_Type := Segura;
       Distance      : Distance_Samples_Type  := 0;
@@ -173,13 +209,13 @@ package body add is
          Medidas.Update_Velocidad (Speed);
 
          Finishing_Notice (Task_Name);
-         delay (Task_Period);
+         delay until (Clock + Milliseconds (Task_Period));
       end loop;
    end Distancia;
 
    task body Volante is
-      Task_Name   : constant String   := "Volante";
-      Task_Period : constant Duration := 0.350;
+      Task_Name   : constant String  := "Volante";
+      Task_Period : constant Natural := 350;
 
       Risk                : Boolean               := False;
       V_Risk              : Boolean               := False;
@@ -200,13 +236,13 @@ package body add is
          Sintomas.Update_Volante (Risk);
 
          Finishing_Notice (Task_Name);
-         delay (Task_Period);
+         delay until (Clock + Milliseconds (Task_Period));
       end loop;
    end Volante;
 
    task body Riesgos is
-      Task_Name   : constant String   := "Riesgos";
-      Task_Period : constant Duration := 0.150;
+      Task_Name   : constant String  := "Riesgos";
+      Task_Period : constant Natural := 150;
    begin
       loop
          Starting_Notice (Task_Name);
@@ -214,36 +250,47 @@ package body add is
          -- Task code here
 
          Finishing_Notice (Task_Name);
-         delay (Task_Period);
+         delay until (Clock + Milliseconds (Task_Period));
       end loop;
    end Riesgos;
 
    task body Display is
-      Task_Name   : constant String   := "Display";
-      Task_Period : constant Duration := 1.000;
+      Task_Name   : constant String  := "Display";
+      Task_Period : constant Natural := 1_000;
    begin
       loop
          Starting_Notice (Task_Name);
 
-         Put_Line ("Distancia: " & Medidas.Distancia);
-         Put_Line ("Velocidad: " & Medidas.Velocidad);
+         Put_Line
+           ("Distancia: " &
+            Distance_Samples_Type'Image (Medidas.Get_Distancia));
+         Put_Line
+           ("Velocidad: " & Speed_Samples_Type'Image (Medidas.Get_Velocidad));
+
          Put_Line ("Sintomas: ");
+         if Sintomas.Get_Cabeza then
+            Put_Line ("    Cabeza:    RIESGO");
+         else
+            Put_Line ("    Cabeza:    OK");
+         end if;
+
          Put_Line
-           ("\tCabeza:   " &
-            (if Sintomas.Riesgo_Cabeza then "RIESGO" else "OK"));
-         Put_Line ("\Distancia: " & Sintomas.Riesgo_Distancia);
-         Put_Line
-           ("\Volante:   " &
-            (if Sintomas.Riesgo_Volante then "RIESGO" else "OK"));
+           ("    Distancia: " &
+            Sintoma_Distancia_Type'Image (Sintomas.Get_Distancia));
+         if Sintomas.Get_Volante then
+            Put_Line ("    Volante:   RIESGO");
+         else
+            Put_Line ("    Volante:   OK");
+         end if;
 
          Finishing_Notice (Task_Name);
-         delay (Task_Period);
+         delay until (Clock + Milliseconds (Task_Period));
       end loop;
    end Display;
 
    task body Modo is
-      Task_Name   : constant String   := "Modo";
-      Task_Period : constant Duration := 0.3;
+      Task_Name   : constant String  := "Modo";
+      Task_Period : constant Natural := 300;
    begin
       loop
          Starting_Notice (Task_Name);
@@ -251,7 +298,7 @@ package body add is
          -- Task code here
 
          Finishing_Notice (Task_Name);
-         delay (Task_Period);
+         delay until (Clock + Milliseconds (Task_Period));
       end loop;
    end Modo;
 
@@ -347,6 +394,7 @@ package body add is
    ----------------------------------------------------------------------
    ------------- procedure para probar los dispositivos
    ----------------------------------------------------------------------
+
    procedure Prueba_Dispositivos;
 
    procedure Prueba_Dispositivos is
