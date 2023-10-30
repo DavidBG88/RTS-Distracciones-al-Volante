@@ -247,7 +247,23 @@ package body add is
       loop
          Starting_Notice (Task_Name);
 
-         -- Task code here
+         if Sintomas.Get_Distancia = Colision and Sintomas.Get_Cabeza then
+            Beep (5);
+            Activate_Brake;
+         elsif Sintomas.Get_Distancia = Imprudente then
+         end if;
+
+         if Sintomas.Get_Volante then
+            Beep (1);
+         end if;
+
+         if Sintomas.Get_Cabeza then
+            if Medidas.Get_Velocidad > 70 then
+               Beep (3);
+            else
+               Beep (2);
+            end if;
+         end if;
 
          Finishing_Notice (Task_Name);
          delay until (Clock + Milliseconds (Task_Period));
