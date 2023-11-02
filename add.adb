@@ -243,26 +243,60 @@ package body add is
    task body Riesgos is
       Task_Name   : constant String  := "Riesgos";
       Task_Period : constant Natural := 150;
+
+      Sintoma_Distancia : Sintoma_Distancia_Type := Segura;
+      Sintoma_Volante   : Boolean                := False;
+      Sintoma_Cabeza    : Boolean                := False;
+      Medida_Velocidad  : Speed_Samples_Type     := 0;
+
+      Beep_Intensity : Volume  := 0;
+      Light_Value    : Boolean := False;
+      Brake_Value    : Boolean := False;
    begin
       loop
          Starting_Notice (Task_Name);
 
-         if Sintomas.Get_Distancia = Colision and Sintomas.Get_Cabeza then
-            Beep (5);
-            Activate_Brake;
-         elsif Sintomas.Get_Distancia = Imprudente then
+         -- Store protected objects state
+
+         Sintoma_Distancia := Sintomas.Get_Distancia;
+         Sintoma_Volante   := Sintomas.Get_Volante;
+         Sintoma_Cabeza    := Sintomas.Get_Cabeza;
+         Medida_Velocidad  := Medidas.Get_Velocidad;
+
+         -- Update actuator values
+
+         if Sintoma_Distancia = Colision and Sintoma_Cabeza then
+            Beep_Intensity := Volume'Max (5, Beep_Intensity);
+            Brake_Value    := True;
          end if;
 
-         if Sintomas.Get_Volante then
-            Beep (1);
+         if Sintoma_Distancia = Insegura then
+            Light_Value := True;
+         elsif Sintoma_Distancia = Imprudente then
+            Light_Value    := True;
+            Beep_Intensity := Volume'Max (4, Beep_Intensity);
          end if;
 
-         if Sintomas.Get_Cabeza then
-            if Medidas.Get_Velocidad > 70 then
-               Beep (3);
+         if Sintoma_Cabeza then
+            if Medida_Velocidad > 70 then
+               Beep_Intensity := Volume'Max (3, Beep_Intensity);
             else
-               Beep (2);
+               Beep_Intensity := Volume'Max (2, Beep_Intensity);
             end if;
+         end if;
+
+         if Sintoma_Volante and not Sintoma_Cabeza and
+           Sintoma_Distancia = Segura
+         then
+            Beep_Intensity := 1;
+         end if;
+
+         -- Update actuators
+
+         Beep (Beep_Intensity);
+         Light (Light_Value);
+         if Brake_Value then
+            Activate_Brake;
          end if;
 
          Finishing_Notice (Task_Name);
