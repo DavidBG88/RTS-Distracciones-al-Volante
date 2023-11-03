@@ -148,6 +148,15 @@ package body add is
    ------------- declaration of tasks
    -----------------------------------------------------------------------
 
+   -- | Task      | Period (ms) | Deadline (ms) | Priority |
+   -- | --------- | ----------- | ------------- | -------- |
+   -- | Cabeza    | 400         | 100           | 4        |
+   -- | Distancia | 300         | 300           | 2        |
+   -- | Volante   | 350         | 350           | 3        |
+   -- | Riesgos   | 150         | 150           | 1        |
+   -- | Display   | 1000        | 1000          | 5        |
+   -- | Modo      | X           | X             | X        |
+
    task Cabeza;
    task Distancia;
    task Volante;
@@ -160,10 +169,9 @@ package body add is
    -----------------------------------------------------------------------
 
    task body Cabeza is
-      -- pragma Priority (System.Priority'First);
-
       Task_Name   : constant String  := "Cabeza";
       Task_Period : constant Natural := 400;
+      pragma Priority (4);
 
       Head_Position  : HeadPosition_Samples_Type := (0, 0);
       Steering_Angle : Steering_Samples_Type     := 0;
@@ -192,6 +200,7 @@ package body add is
    task body Distancia is
       Task_Name   : constant String  := "Distancia";
       Task_Period : constant Natural := 300;
+      pragma Priority (2);
 
       Distance_Risk : Sintoma_Distancia_Type := Segura;
       Distance      : Distance_Samples_Type  := 0;
@@ -216,6 +225,7 @@ package body add is
    task body Volante is
       Task_Name   : constant String  := "Volante";
       Task_Period : constant Natural := 350;
+      pragma Priority (3);
 
       Risk                : Boolean               := False;
       V_Risk              : Boolean               := False;
@@ -243,6 +253,7 @@ package body add is
    task body Riesgos is
       Task_Name   : constant String  := "Riesgos";
       Task_Period : constant Natural := 150;
+      pragma Priority (1);
 
       Sintoma_Distancia : Sintoma_Distancia_Type := Segura;
       Sintoma_Volante   : Boolean                := False;
@@ -307,6 +318,7 @@ package body add is
    task body Display is
       Task_Name   : constant String  := "Display";
       Task_Period : constant Natural := 1_000;
+      pragma Priority (5);
    begin
       loop
          Starting_Notice (Task_Name);
