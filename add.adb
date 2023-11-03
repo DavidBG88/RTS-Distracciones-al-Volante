@@ -7,8 +7,8 @@ with tools;   use tools;
 with devices; use devices;
 
 -- Packages needed to generate pulse interrupts
--- with Ada.Interrupts.Names;
--- with Pulse_Interrupt; use Pulse_Interrupt;
+with Ada.Interrupts.Names;
+with pulse_interrupt; use pulse_interrupt;
 
 package body add is
    ----------------------------------------------------------------------
@@ -83,6 +83,19 @@ package body add is
       Velocidad : Speed_Samples_Type    := 0;
    end Medidas;
 
+   protected Controlador_Modo is
+      pragma Priority (System.Interrupt_Priority'First + 9);
+
+      procedure Interrupcion;
+      pragma Attach_Handler
+        (Interrupcion, Ada.Interrupts.Names.External_Interrupt_2);
+
+      entry Esperar_Modo;
+
+   private
+      Llamada_Pendiente : Boolean := False;
+   end Controlador_Modo;
+
    ----------------------------------------------------------------------
    ------------- definition of protected objects
    ----------------------------------------------------------------------
@@ -144,18 +157,30 @@ package body add is
       end Get_Velocidad;
    end Medidas;
 
+   protected body Controlador_Modo is
+      procedure Interrupcion is
+      begin
+         Llamada_Pendiente := True;
+      end Interrupcion;
+
+      entry Esperar_Modo when Llamada_Pendiente is
+      begin
+         Llamada_Pendiente := False;
+      end Esperar_Modo;
+   end Controlador_Modo;
+
    -----------------------------------------------------------------------
    ------------- declaration of tasks
    -----------------------------------------------------------------------
 
    -- | Task      | Period (ms) | Deadline (ms) | Priority |
    -- | --------- | ----------- | ------------- | -------- |
-   -- | Cabeza    | 400         | 100           | 4        |
-   -- | Distancia | 300         | 300           | 2        |
-   -- | Volante   | 350         | 350           | 3        |
-   -- | Riesgos   | 150         | 150           | 1        |
-   -- | Display   | 1000        | 1000          | 5        |
-   -- | Modo      | X           | X             | X        |
+   -- | Cabeza    | 400         | 100           | 50       |
+   -- | Distancia | 300         | 300           | 30       |
+   -- | Volante   | 350         | 350           | 40       |
+   -- | Riesgos   | 150         | 150           | 10       |
+   -- | Display   | 1000        | 1000          | 60       |
+   -- | Modo      | X           | X             | 20       |
 
    task Cabeza;
    task Distancia;
@@ -171,7 +196,7 @@ package body add is
    task body Cabeza is
       Task_Name   : constant String  := "Cabeza";
       Task_Period : constant Natural := 400;
-      pragma Priority (4);
+      pragma Priority (50);
 
       Head_Position  : HeadPosition_Samples_Type := (0, 0);
       Steering_Angle : Steering_Samples_Type     := 0;
@@ -200,7 +225,7 @@ package body add is
    task body Distancia is
       Task_Name   : constant String  := "Distancia";
       Task_Period : constant Natural := 300;
-      pragma Priority (2);
+      pragma Priority (30);
 
       Distance_Risk : Sintoma_Distancia_Type := Segura;
       Distance      : Distance_Samples_Type  := 0;
@@ -225,7 +250,7 @@ package body add is
    task body Volante is
       Task_Name   : constant String  := "Volante";
       Task_Period : constant Natural := 350;
-      pragma Priority (3);
+      pragma Priority (40);
 
       Risk                : Boolean               := False;
       V_Risk              : Boolean               := False;
@@ -253,7 +278,7 @@ package body add is
    task body Riesgos is
       Task_Name   : constant String  := "Riesgos";
       Task_Period : constant Natural := 150;
-      pragma Priority (1);
+      pragma Priority (10);
 
       Sintoma_Distancia : Sintoma_Distancia_Type := Segura;
       Sintoma_Volante   : Boolean                := False;
@@ -318,7 +343,7 @@ package body add is
    task body Display is
       Task_Name   : constant String  := "Display";
       Task_Period : constant Natural := 1_000;
-      pragma Priority (5);
+      pragma Priority (60);
    begin
       loop
          Starting_Notice (Task_Name);
@@ -352,12 +377,13 @@ package body add is
 
    task body Modo is
       Task_Name   : constant String  := "Modo";
-      Task_Period : constant Natural := 300;
+      Task_Period : constant Natural := 100;
+      pragma Priority (20);
    begin
       loop
          Starting_Notice (Task_Name);
 
-         -- Task code here
+         Controlador_Eventos.Esperar_Evento;
 
          Finishing_Notice (Task_Name);
          delay until (Clock + Milliseconds (Task_Period));
