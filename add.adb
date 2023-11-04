@@ -159,12 +159,13 @@ package body add is
             Starting_Notice (Task_Name);
 
             Reading_HeadPosition (Head_Position);
+            Reading_Steering (Steering_Angle);
             Riesgo_Cabeza
               (Head_Position, Steering_Angle, Prev_X_Risk, Prev_Y_Risk, X_Risk,
                Y_Risk, Head_Risk);
+            Sintomas.Update_Cabeza (Head_Risk);
             Prev_X_Risk := X_Risk;
             Prev_Y_Risk := Y_Risk;
-            Sintomas.Update_Cabeza (Head_Risk);
 
             Finishing_Notice (Task_Name);
             delay until (Clock + Milliseconds (Task_Period));
