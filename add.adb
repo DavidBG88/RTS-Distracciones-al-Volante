@@ -27,6 +27,7 @@ package body add is
    -----------------------------------------------------------------------
 
    type Sintoma_Distancia_Type is (Segura, Insegura, Imprudente, Colision);
+   type Modo_Sistema_Type is (M1, M2, M3);
 
    -----------------------------------------------------------------------
    ------------- declaration of auxiliary methods
@@ -92,8 +93,11 @@ package body add is
 
       entry Esperar_Modo;
 
+      procedure Update_Modo_Sistema (Modo : in Modo_Sistema_Type);
+      function Get_Modo_Sistema return Modo_Sistema_Type;
    private
-      Llamada_Pendiente : Boolean := False;
+      Llamada_Pendiente : Boolean           := False;
+      Modo_Sistema      : Modo_Sistema_Type := M1;
    end Controlador_Modo;
 
    ----------------------------------------------------------------------
@@ -167,6 +171,16 @@ package body add is
       begin
          Llamada_Pendiente := False;
       end Esperar_Modo;
+
+      procedure Update_Modo_Sistema (Modo : in Modo_Sistema_Type) is
+      begin
+         Modo_Sistema := Modo;
+      end Update_Modo_Sistema;
+
+      function Get_Modo_Sistema return Modo_Sistema_Type is
+      begin
+         return Modo_Sistema;
+      end Get_Modo_Sistema;
    end Controlador_Modo;
 
    -----------------------------------------------------------------------
@@ -288,51 +302,59 @@ package body add is
       Beep_Intensity : Volume  := 0;
       Light_Value    : Boolean := False;
       Brake_Value    : Boolean := False;
+
+      Modo_Sistema : Modo_Sistema_Type := M1;
    begin
       loop
          Starting_Notice (Task_Name);
 
          -- Store protected objects state
 
-         Sintoma_Distancia := Sintomas.Get_Distancia;
-         Sintoma_Volante   := Sintomas.Get_Volante;
-         Sintoma_Cabeza    := Sintomas.Get_Cabeza;
-         Medida_Velocidad  := Medidas.Get_Velocidad;
+         Modo_Sistema := Controlador_Modo.Get_Modo_Sistema;
 
-         -- Update actuator values
+         if Modo_Sistema = M1 or Modo_Sistema = M2 then
+            Sintoma_Distancia := Sintomas.Get_Distancia;
+            Sintoma_Volante   := Sintomas.Get_Volante;
+            Sintoma_Cabeza    := Sintomas.Get_Cabeza;
+            Medida_Velocidad  := Medidas.Get_Velocidad;
 
-         if Sintoma_Distancia = Colision and Sintoma_Cabeza then
-            Beep_Intensity := Volume'Max (5, Beep_Intensity);
-            Brake_Value    := True;
-         end if;
+            -- Update actuator values
 
-         if Sintoma_Distancia = Insegura then
-            Light_Value := True;
-         elsif Sintoma_Distancia = Imprudente then
-            Light_Value    := True;
-            Beep_Intensity := Volume'Max (4, Beep_Intensity);
-         end if;
-
-         if Sintoma_Cabeza then
-            if Medida_Velocidad > 70 then
-               Beep_Intensity := Volume'Max (3, Beep_Intensity);
-            else
-               Beep_Intensity := Volume'Max (2, Beep_Intensity);
+            if Sintoma_Distancia = Colision and Sintoma_Cabeza then
+               Beep_Intensity := Volume'Max (5, Beep_Intensity);
+               Brake_Value    := True;
             end if;
-         end if;
 
-         if Sintoma_Volante and not Sintoma_Cabeza and
-           Sintoma_Distancia = Segura
-         then
-            Beep_Intensity := 1;
-         end if;
+            if Controlador_Modo.Modo_Sistema = M1 then
+               if Sintoma_Distancia = Insegura then
+                  Light_Value := True;
+               elsif Sintoma_Distancia = Imprudente then
+                  Light_Value    := True;
+                  Beep_Intensity := Volume'Max (4, Beep_Intensity);
+               end if;
+            end if;
 
-         -- Update actuators
+            if Sintoma_Cabeza then
+               if Medida_Velocidad > 70 then
+                  Beep_Intensity := Volume'Max (3, Beep_Intensity);
+               else
+                  Beep_Intensity := Volume'Max (2, Beep_Intensity);
+               end if;
+            end if;
 
-         Beep (Beep_Intensity);
-         Light (Light_Value);
-         if Brake_Value then
-            Activate_Brake;
+            if Sintoma_Volante and not Sintoma_Cabeza and
+              Sintoma_Distancia = Segura
+            then
+               Beep_Intensity := 1;
+            end if;
+
+            -- Update actuators
+
+            Beep (Beep_Intensity);
+            Light (Light_Value);
+            if Brake_Value then
+               Activate_Brake;
+            end if;
          end if;
 
          Finishing_Notice (Task_Name);
@@ -379,11 +401,29 @@ package body add is
       Task_Name   : constant String  := "Modo";
       Task_Period : constant Natural := 100;
       pragma Priority (20);
+
+      Modo_Sistema : Modo_Sistema_Type := M1;
    begin
       loop
          Starting_Notice (Task_Name);
 
          Controlador_Eventos.Esperar_Evento;
+
+         Modo_Sistema := Controlador_Modo.Get_Modo_Sistema;
+
+         if Modo_Sistema = M1 then
+            if Sintomas.Get_Distancia /= Colision then
+               Controlador_Modo.Update_Modo_Sistema (M2);
+            end if;
+         elsif Modo_Sistema = M2 then
+            if Sintomas.Get_Distancia /= Colision and
+              not Sintomas.Riesgo_Cabeza
+            then
+               Controlador_Modo.Update_Modo_Sistema (M3);
+            end if;
+         else
+            Controlador_Modo.Update_Modo_Sistema (M1);
+         end if;
 
          Finishing_Notice (Task_Name);
          delay until (Clock + Milliseconds (Task_Period));
