@@ -54,7 +54,7 @@ package body add is
    ------------- declaration of packages
    -----------------------------------------------------------------------
 
-   package sensors is
+   package Sensors is
       task Cabeza is
          pragma Priority (50);
       end Cabeza;
@@ -67,18 +67,18 @@ package body add is
       task Modo is
          pragma Priority (20);
       end Modo;
-   end sensors;
+   end Sensors;
 
-   package actuators is
+   package Actuators is
       task Riesgos is
          pragma Priority (10);
       end Riesgos;
       task Display is
          pragma Priority (60);
       end Display;
-   end actuators;
+   end Actuators;
 
-   package state is
+   package State is
       protected Sintomas is
          procedure Update_Cabeza (Risk : Boolean);
          procedure Update_Distancia (Risk : Sintoma_Distancia_Type);
@@ -119,14 +119,14 @@ package body add is
          Llamada_Pendiente : Boolean           := False;
          Modo_Sistema      : Modo_Sistema_Type := M1;
       end Controlador_Modo;
-   end state;
+   end State;
 
    ----------------------------------------------------------------------
-   ------------- sensors package definition
+   ------------- Sensors package definition
    ----------------------------------------------------------------------
 
-   package body sensors is
-      use state;
+   package body Sensors is
+      use State;
       -- Auxiliary function declarations
 
       procedure Riesgo_Cabeza
@@ -320,14 +320,14 @@ package body add is
          V_Risk     := Angle_Diff >= 20 and Speed > 40;
          Risk       := Prev_V_Risk and V_Risk;
       end Riesgo_Volante;
-   end sensors;
+   end Sensors;
 
    ----------------------------------------------------------------------
-   ------------- actuators package definition
+   ------------- Actuators package definition
    ----------------------------------------------------------------------
 
-   package body actuators is
-      use state;
+   package body Actuators is
+      use State;
 
       task body Riesgos is
          Task_Name   : constant String  := "Riesgos";
@@ -440,13 +440,13 @@ package body add is
             delay until (Clock + Milliseconds (Task_Period));
          end loop;
       end Display;
-   end actuators;
+   end Actuators;
 
    ----------------------------------------------------------------------
-   ------------- state package definition
+   ------------- State package definition
    ----------------------------------------------------------------------
 
-   package body state is
+   package body State is
       protected body Sintomas is
          procedure Update_Cabeza (Risk : Boolean) is
          begin
@@ -526,7 +526,7 @@ package body add is
          end Get_Modo_Sistema;
       end Controlador_Modo;
 
-   end state;
+   end State;
 
    -----------------------------------------------------------------------
    ------------- body of auxiliary methods
