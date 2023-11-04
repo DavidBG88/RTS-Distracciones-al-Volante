@@ -55,15 +55,27 @@ package body add is
    -----------------------------------------------------------------------
 
    package sensors is
-      task Cabeza;
-      task Distancia;
-      task Volante;
-      task Modo;
+      task Cabeza is
+         pragma Priority (50);
+      end Cabeza;
+      task Distancia is
+         pragma Priority (30);
+      end Distancia;
+      task Volante is
+         pragma Priority (40);
+      end Volante;
+      task Modo is
+         pragma Priority (20);
+      end Modo;
    end sensors;
 
    package actuators is
-      task Riesgos;
-      task Display;
+      task Riesgos is
+         pragma Priority (10);
+      end Riesgos;
+      task Display is
+         pragma Priority (60);
+      end Display;
    end actuators;
 
    package state is
@@ -134,7 +146,6 @@ package body add is
       task body Cabeza is
          Task_Name   : constant String  := "Cabeza";
          Task_Period : constant Natural := 400;
-         -- pragma Priority (50);
 
          Head_Position  : HeadPosition_Samples_Type := (0, 0);
          Steering_Angle : Steering_Samples_Type     := 0;
@@ -163,7 +174,6 @@ package body add is
       task body Distancia is
          Task_Name   : constant String  := "Distancia";
          Task_Period : constant Natural := 300;
-         -- pragma Priority (30);
 
          Distance_Risk : Sintoma_Distancia_Type := Segura;
          Distance      : Distance_Samples_Type  := 0;
@@ -188,7 +198,6 @@ package body add is
       task body Volante is
          Task_Name   : constant String  := "Volante";
          Task_Period : constant Natural := 350;
-         -- pragma Priority (40);
 
          Risk                : Boolean               := False;
          V_Risk              : Boolean               := False;
@@ -216,7 +225,6 @@ package body add is
       task body Modo is
          Task_Name   : constant String  := "Modo";
          Task_Period : constant Natural := 100;
-         -- pragma Priority (20);
 
          Modo_Sistema : Modo_Sistema_Type := M1;
       begin
@@ -319,20 +327,21 @@ package body add is
    ----------------------------------------------------------------------
 
    package body actuators is
+      use state;
+
       task body Riesgos is
          Task_Name   : constant String  := "Riesgos";
          Task_Period : constant Natural := 150;
-         -- pragma Priority (10);
 
          Sintoma_Distancia : Sintoma_Distancia_Type := Segura;
          Sintoma_Volante   : Boolean                := False;
          Sintoma_Cabeza    : Boolean                := False;
          Medida_Velocidad  : Speed_Samples_Type     := 0;
 
-         Beep_Intensity : Volume  := 1;
-         Beep_Value     : Boolean := False;
-         Light_Value    : Boolean := False;
-         Brake_Value    : Boolean := False;
+         Beep_Intensity : Volume       := 1;
+         Beep_Value     : Boolean      := False;
+         Brake_Value    : Boolean      := False;
+         Light_Value    : Light_States := Off;
 
          Modo_Sistema : Modo_Sistema_Type := M1;
       begin
@@ -357,13 +366,13 @@ package body add is
                   Brake_Value    := True;
                end if;
 
-               if Controlador_Modo.Modo_Sistema = M1 then
+               if Modo_Sistema = M1 then
                   if Sintoma_Distancia = Insegura then
-                     Light_Value := True;
+                     Light_Value := On;
                   elsif Sintoma_Distancia = Imprudente then
                      Beep_Intensity := Volume'Max (4, Beep_Intensity);
                      Beep_Value     := True;
-                     Light_Value    := True;
+                     Light_Value    := On;
                   end if;
                end if;
 
@@ -383,8 +392,10 @@ package body add is
 
                -- Update actuators
 
-               Beep (Beep_Intensity);
                Light (Light_Value);
+               if Beep_Value then
+                  Beep (Beep_Intensity);
+               end if;
                if Brake_Value then
                   Activate_Brake;
                end if;
@@ -398,7 +409,6 @@ package body add is
       task body Display is
          Task_Name   : constant String  := "Display";
          Task_Period : constant Natural := 1_000;
-         pragma Priority (60);
       begin
          loop
             Starting_Notice (Task_Name);
