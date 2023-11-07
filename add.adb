@@ -105,7 +105,7 @@ package body add is
       end Medidas;
 
       protected Controlador_Modo is
-         pragma Priority (System.Interrupt_Priority'First + 9);
+         pragma Priority (Priority_Of_External_Interrupts_2);
 
          procedure Interrupcion;
          pragma Attach_Handler
