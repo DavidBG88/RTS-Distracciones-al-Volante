@@ -144,8 +144,10 @@ package body add is
          Prev_V_Risk : in Boolean; V_Risk : out Boolean; Risk : out Boolean);
 
       task body Cabeza is
-         Task_Name   : constant String  := "Cabeza";
-         Task_Period : constant Natural := 400;
+         Task_Name   : constant String    := "Cabeza";
+         Task_Period : constant Time_Span := Milliseconds (400);
+
+         Next_Wake_Time : Time := Big_Bang + Task_Period;
 
          Head_Position  : HeadPosition_Samples_Type := (0, 0);
          Steering_Angle : Steering_Samples_Type     := 0;
@@ -168,13 +170,17 @@ package body add is
             Prev_Y_Risk := Y_Risk;
 
             Finishing_Notice (Task_Name);
-            delay until (Clock + Milliseconds (Task_Period));
+
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
+            delay until Next_Wake_Time;
          end loop;
       end Cabeza;
 
       task body Distancia is
-         Task_Name   : constant String  := "Distancia";
-         Task_Period : constant Natural := 300;
+         Task_Name   : constant String    := "Distancia";
+         Task_Period : constant Time_Span := Milliseconds (300);
+
+         Next_Wake_Time : Time := Big_Bang + Task_Period;
 
          Distance_Risk : Sintoma_Distancia_Type := Segura;
          Distance      : Distance_Samples_Type  := 0;
@@ -192,13 +198,17 @@ package body add is
             Medidas.Update_Velocidad (Speed);
 
             Finishing_Notice (Task_Name);
-            delay until (Clock + Milliseconds (Task_Period));
+
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
+            delay until Next_Wake_Time;
          end loop;
       end Distancia;
 
       task body Volante is
-         Task_Name   : constant String  := "Volante";
-         Task_Period : constant Natural := 350;
+         Task_Name   : constant String    := "Volante";
+         Task_Period : constant Time_Span := Milliseconds (350);
+
+         Next_Wake_Time : Time := Big_Bang + Task_Period;
 
          Risk                : Boolean               := False;
          V_Risk              : Boolean               := False;
@@ -219,13 +229,15 @@ package body add is
             Sintomas.Update_Volante (Risk);
 
             Finishing_Notice (Task_Name);
-            delay until (Clock + Milliseconds (Task_Period));
+
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
+            delay until Next_Wake_Time;
          end loop;
       end Volante;
 
       task body Modo is
-         Task_Name   : constant String  := "Modo";
-         Task_Period : constant Natural := 100;
+         Task_Name   : constant String    := "Modo";
+         Task_Period : constant Time_Span := Milliseconds (100);
 
          Modo_Sistema : Modo_Sistema_Type := M1;
       begin
@@ -251,7 +263,7 @@ package body add is
             end if;
 
             Finishing_Notice (Task_Name);
-            delay until (Clock + Milliseconds (Task_Period));
+            delay until (Clock + Task_Period);
          end loop;
       end Modo;
 
@@ -331,8 +343,10 @@ package body add is
       use State;
 
       task body Riesgos is
-         Task_Name   : constant String  := "Riesgos";
-         Task_Period : constant Natural := 150;
+         Task_Name   : constant String    := "Riesgos";
+         Task_Period : constant Time_Span := Milliseconds (150);
+
+         Next_Wake_Time : Time := Big_Bang + Task_Period;
 
          Sintoma_Distancia : Sintoma_Distancia_Type := Segura;
          Sintoma_Volante   : Boolean                := False;
@@ -403,13 +417,17 @@ package body add is
             end if;
 
             Finishing_Notice (Task_Name);
-            delay until (Clock + Milliseconds (Task_Period));
+
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
+            delay until Next_Wake_Time;
          end loop;
       end Riesgos;
 
       task body Display is
-         Task_Name   : constant String  := "Display";
-         Task_Period : constant Natural := 1_000;
+         Task_Name   : constant String    := "Display";
+         Task_Period : constant Time_Span := Milliseconds (1_000);
+
+         Next_Wake_Time : Time := Big_Bang + Task_Period;
       begin
          loop
             Starting_Notice (Task_Name);
@@ -438,7 +456,9 @@ package body add is
             end if;
 
             Finishing_Notice (Task_Name);
-            delay until (Clock + Milliseconds (Task_Period));
+
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
+            delay until Next_Wake_Time;
          end loop;
       end Display;
    end Actuators;
@@ -573,15 +593,20 @@ package body add is
 
       for I in 1 .. 120 loop
          -- Prueba distancia
-         --Reading_Distance (Current_D);
-         --Display_Distance (Current_D);
-         --if (Current_D < 40) then Light (On);
-         --                    else Light (Off); end if;
+         Reading_Distance (Current_D);
+         Display_Distance (Current_D);
+         if (Current_D < 40) then
+            Light (On);
+         else
+            Light (Off);
+         end if;
 
          -- Prueba velocidad
-         --Reading_Speed (Current_V);
-         --Display_Speed (Current_V);
-         --if (Current_V > 110) then Beep (2); end if;
+         Reading_Speed (Current_V);
+         Display_Speed (Current_V);
+         if (Current_V > 110) then
+            Beep (2);
+         end if;
 
          -- Prueba volante
          Reading_Steering (Current_S);
@@ -593,9 +618,11 @@ package body add is
          end if;
 
          -- Prueba Posicion de la cabeza
-         --Reading_HeadPosition (Current_H);
-         --Display_HeadPosition_Sample (Current_H);
-         --if (Current_H(x) > 30) then Beep (4); end if;
+         Reading_HeadPosition (Current_H);
+         Display_HeadPosition_Sample (Current_H);
+         if (Current_H (x) > 30) then
+            Beep (4);
+         end if;
 
          -- Prueba ojos
          --Reading_EyesImage (Current_O);
@@ -613,6 +640,6 @@ package body add is
 
 begin
    Starting_Notice ("Programa Principal");
-   Prueba_Dispositivos;
+   --Prueba_Dispositivos;
    Finishing_Notice ("Programa Principal");
 end add;
