@@ -16,12 +16,12 @@ with pulse_interrupt; use pulse_interrupt;
 
 -- | Task      | Period (ms) | Deadline (ms) | Priority |
 -- | --------- | ----------- | ------------- | -------- |
--- | Cabeza    | 400         | 100           | 50       |
--- | Distancia | 300         | 300           | 30       |
--- | Volante   | 350         | 350           | 40       |
--- | Riesgos   | 150         | 150           | 10       |
--- | Display   | 1000        | 1000          | 60       |
--- | Modo      | X           | X             | 20       |
+-- | Cabeza    | 400         | 100           | 20       |
+-- | Distancia | 300         | 300           | 40       |
+-- | Volante   | 350         | 350           | 30       |
+-- | Riesgos   | 150         | 150           | 50       |
+-- | Display   | 1000        | 1000          | 10       |
+-- | Modo      | X           | X             | 60       |
 
 package body add is
    ----------------------------------------------------------------------
@@ -56,25 +56,25 @@ package body add is
 
    package Sensors is
       task Cabeza is
-         pragma Priority (50);
+         pragma Priority (20);
       end Cabeza;
       task Distancia is
-         pragma Priority (30);
+         pragma Priority (40);
       end Distancia;
       task Volante is
-         pragma Priority (40);
+         pragma Priority (30);
       end Volante;
       task Modo is
-         pragma Priority (20);
+         pragma Priority (60);
       end Modo;
    end Sensors;
 
    package Actuators is
       task Riesgos is
-         pragma Priority (10);
+         pragma Priority (50);
       end Riesgos;
       task Display is
-         pragma Priority (60);
+         pragma Priority (10);
       end Display;
    end Actuators;
 
@@ -171,8 +171,8 @@ package body add is
 
             Finishing_Notice (Task_Name);
 
-            Next_Wake_Time := Next_Wake_Time + Task_Period;
             delay until Next_Wake_Time;
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
          end loop;
       end Cabeza;
 
@@ -199,8 +199,8 @@ package body add is
 
             Finishing_Notice (Task_Name);
 
-            Next_Wake_Time := Next_Wake_Time + Task_Period;
             delay until Next_Wake_Time;
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
          end loop;
       end Distancia;
 
@@ -230,8 +230,8 @@ package body add is
 
             Finishing_Notice (Task_Name);
 
-            Next_Wake_Time := Next_Wake_Time + Task_Period;
             delay until Next_Wake_Time;
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
          end loop;
       end Volante;
 
@@ -418,8 +418,8 @@ package body add is
 
             Finishing_Notice (Task_Name);
 
-            Next_Wake_Time := Next_Wake_Time + Task_Period;
             delay until Next_Wake_Time;
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
          end loop;
       end Riesgos;
 
@@ -432,6 +432,7 @@ package body add is
          loop
             Starting_Notice (Task_Name);
 
+            New_Line;
             Put_Line
               ("Distancia: " &
                Distance_Samples_Type'Image (Medidas.Get_Distancia));
@@ -457,8 +458,8 @@ package body add is
 
             Finishing_Notice (Task_Name);
 
-            Next_Wake_Time := Next_Wake_Time + Task_Period;
             delay until Next_Wake_Time;
+            Next_Wake_Time := Next_Wake_Time + Task_Period;
          end loop;
       end Display;
    end Actuators;
@@ -555,11 +556,13 @@ package body add is
 
    procedure Starting_Notice (Task_Name : in String) is
    begin
+      Current_Time (Big_Bang);
       Put_Line ("Comenzando tarea " & Task_Name);
    end Starting_Notice;
 
    procedure Finishing_Notice (Task_Name : in String) is
    begin
+      Current_Time (Big_Bang);
       Put_Line ("Finalizando tarea " & Task_Name);
    end Finishing_Notice;
 
