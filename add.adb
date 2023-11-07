@@ -263,7 +263,6 @@ package body add is
             end if;
 
             Finishing_Notice (Task_Name);
-            delay until (Clock + Task_Period);
          end loop;
       end Modo;
 
