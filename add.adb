@@ -21,20 +21,20 @@ with State;     use State;
 
 -- | Task      | Period (ms) | Deadline (ms) | Priority |
 -- | --------- | ----------- | ------------- | -------- |
--- | Cabeza    | 400         | 100           | 20       |
--- | Distancia | 300         | 300           | 40       |
--- | Volante   | 350         | 350           | 30       |
--- | Riesgos   | 150         | 150           | 50       |
--- | Display   | 1000        | 1000          | 10       |
+-- | Cabeza    | 400         | 100           | 10       |
+-- | Distancia | 300         | 300           | 30       |
+-- | Volante   | 350         | 350           | 40       |
+-- | Riesgos   | 150         | 150           | 20       |
+-- | Display   | 1000        | 1000          | 50       |
 -- | Modo      | X           | X             | 60       |
 
 package body add is
-   Task_Cabeza : Task_Cabeza_Type;
-   Task_Distancia : Task_Display_Type;
-   Task_Volante : Task_Volante_Type;
-   Task_Riesgos : Task_Riesgos_Type;
-   Task_Display : Task_Display_Type;
-   Task_Modo : Task_Modo_Type;
+   Task_Cabeza    : Task_Cabeza_Type;
+   Task_Distancia : Task_Distancia_Type;
+   Task_Volante   : Task_Volante_Type;
+   Task_Riesgos   : Task_Riesgos_Type;
+   Task_Display   : Task_Display_Type;
+   Task_Modo      : Task_Modo_Type;
 
    procedure Background is
    begin
@@ -44,20 +44,5 @@ package body add is
    end Background;
 begin
    Starting_Notice ("Programa Principal");
-
-   Set_Priority(Task_Cabeza,    20);
-   Set_Priority(Task_Distancia, 40);
-   Set_Priority(Task_Volante,   30);
-   Set_Priority(Task_Riesgos,   50);
-   Set_Priority(Task_Display,   10);
-   Set_Priority(Task_Modo,      60);
-
-   Task_Cabeza;
-   Task_Distancia;
-   Task_Volante;
-   Task_Riesgos;
-   Task_Display;
-   Task_Modo;
-
    Finishing_Notice ("Programa Principal");
 end add;
