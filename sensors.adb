@@ -25,7 +25,7 @@ package body Sensors is
 
     -- Tasks
 
-    task body Cabeza is
+    task body Task_Cabeza_Type is
         Task_Name   : constant String    := "Cabeza";
         Task_Period : constant Time_Span := Milliseconds (400);
 
@@ -56,9 +56,9 @@ package body Sensors is
             delay until Next_Wake_Time;
             Next_Wake_Time := Next_Wake_Time + Task_Period;
         end loop;
-    end Cabeza;
+    end Task_Cabeza_Type;
 
-    task body Distancia is
+    task body Task_Distancia_Type is
         Task_Name   : constant String    := "Distancia";
         Task_Period : constant Time_Span := Milliseconds (300);
 
@@ -84,9 +84,9 @@ package body Sensors is
             delay until Next_Wake_Time;
             Next_Wake_Time := Next_Wake_Time + Task_Period;
         end loop;
-    end Distancia;
+    end Task_Distancia_Type;
 
-    task body Volante is
+    task body Task_Volante_Type is
         Task_Name   : constant String    := "Volante";
         Task_Period : constant Time_Span := Milliseconds (350);
 
@@ -115,9 +115,9 @@ package body Sensors is
             delay until Next_Wake_Time;
             Next_Wake_Time := Next_Wake_Time + Task_Period;
         end loop;
-    end Volante;
+    end Task_Volante_Type;
 
-    task body Modo is
+    task body Task_Modo_Type is
         Task_Name   : constant String    := "Modo";
         Task_Period : constant Time_Span := Milliseconds (100);
 
@@ -146,7 +146,7 @@ package body Sensors is
 
             Finishing_Notice (Task_Name);
         end loop;
-    end Modo;
+    end Task_Modo_Type;
 
     -- Definicion de funciones auxiliares
 

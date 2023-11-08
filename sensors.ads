@@ -1,14 +1,6 @@
 package Sensors is
-    task Cabeza is
-        pragma Priority (20);
-    end Cabeza;
-    task Distancia is
-        pragma Priority (40);
-    end Distancia;
-    task Volante is
-        pragma Priority (30);
-    end Volante;
-    task Modo is
-        pragma Priority (60);
-    end Modo;
+    task type Task_Cabeza_Type;
+    task type Task_Distancia_Type;
+    task type Task_Volante_Type;
+    task type Task_Modo_Type;
 end Sensors;

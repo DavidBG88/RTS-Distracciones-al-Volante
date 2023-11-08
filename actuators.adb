@@ -7,7 +7,7 @@ with devices; use devices;
 with State; use State;
 
 package body Actuators is
-    task body Riesgos is
+    task body Task_Riesgos_Type is
         Task_Name   : constant String    := "Riesgos";
         Task_Period : constant Time_Span := Milliseconds (150);
 
@@ -86,9 +86,9 @@ package body Actuators is
             delay until Next_Wake_Time;
             Next_Wake_Time := Next_Wake_Time + Task_Period;
         end loop;
-    end Riesgos;
+    end Task_Riesgos_Type;
 
-    task body Display is
+    task body Task_Display_Type is
         Task_Name   : constant String    := "Display";
         Task_Period : constant Time_Span := Milliseconds (1_000);
 
@@ -128,5 +128,5 @@ package body Actuators is
             delay until Next_Wake_Time;
             Next_Wake_Time := Next_Wake_Time + Task_Period;
         end loop;
-    end Display;
+    end Task_Display_Type;
 end Actuators;

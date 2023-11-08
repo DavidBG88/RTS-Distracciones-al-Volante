@@ -1,8 +1,4 @@
 package Actuators is
-    task Riesgos is
-        pragma Priority (50);
-    end Riesgos;
-    task Display is
-        pragma Priority (10);
-    end Display;
+    task type Task_Riesgos_Type;
+    task type Display;
 end Actuators;
