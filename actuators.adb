@@ -18,10 +18,11 @@ package body Actuators is
         Sintoma_Cabeza    : Boolean                := False;
         Medida_Velocidad  : Speed_Samples_Type     := 0;
 
-        Beep_Intensity : Volume       := 1;
-        Beep_Value     : Boolean      := False;
-        Brake_Value    : Boolean      := False;
-        Light_Value    : Light_States := Off;
+        Beep_Intensity   : Volume       := 1;
+        Beep_Value       : Boolean      := False;
+        Brake_Value      : Boolean      := False;
+        Light_Value      : Light_States := Off;
+        Prev_Light_Value : Light_States := Off;
 
         Modo_Sistema : Modo_Sistema_Type := M1;
     begin
@@ -37,6 +38,11 @@ package body Actuators is
                 Sintoma_Volante   := Sintomas.Get_Volante;
                 Sintoma_Cabeza    := Sintomas.Get_Cabeza;
                 Medida_Velocidad  := Medidas.Get_Velocidad;
+
+                Beep_Intensity := 1;
+                Beep_Value     := False;
+                Brake_Value    := False;
+                Light_Value    := Off;
 
                 -- Update actuator values
 
@@ -72,13 +78,17 @@ package body Actuators is
 
                 -- Update actuators
 
-                Light (Light_Value);
+                if Light_Value /= Prev_Light_Value then
+                    Light (Light_Value);
+                end if;
                 if Beep_Value then
                     Beep (Beep_Intensity);
                 end if;
                 if Brake_Value then
                     Activate_Brake;
                 end if;
+
+                Prev_Light_Value := Light_Value;
             end if;
 
             Finishing_Notice (Task_Name);
