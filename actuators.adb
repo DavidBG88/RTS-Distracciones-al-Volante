@@ -101,6 +101,10 @@ package body Actuators is
             New_Line;
 
             Put_Line
+               ("Modo: " &
+                Modo_Sistema_Type'Image (Controlador_Modo.Get_Modo_Sistema));
+
+            Put_Line
                ("Distancia: " &
                 Distance_Samples_Type'Image (Medidas.Get_Distancia));
             Put_Line

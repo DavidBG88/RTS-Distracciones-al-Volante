@@ -21,11 +21,11 @@ with State;     use State;
 
 -- | Task      | Period (ms) | Deadline (ms) | Priority |
 -- | --------- | ----------- | ------------- | -------- |
--- | Cabeza    | 400         | 100           | 10       |
+-- | Cabeza    | 400         | 100           | 50       |
 -- | Distancia | 300         | 300           | 30       |
--- | Volante   | 350         | 350           | 40       |
--- | Riesgos   | 150         | 150           | 20       |
--- | Display   | 1000        | 1000          | 50       |
+-- | Volante   | 350         | 350           | 20       |
+-- | Riesgos   | 150         | 150           | 40       |
+-- | Display   | 1000        | 1000          | 10       |
 -- | Modo      | X           | X             | 60       |
 
 package body add is

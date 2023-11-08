@@ -171,12 +171,10 @@ package body Sensors is
            Number_Sign (Integer (Volante)) =
            Number_Sign (Integer (Cabeza (y)));
         Total_Y_Risk           :=
-           Current_Y_Risk and Prev_Y_Risk and abs (Volante) <= 30 and
-           not Wheel_And_Head_Aligned;
+           Current_Y_Risk and Prev_Y_Risk and
+           (not Wheel_And_Head_Aligned or abs (Cabeza (y)) > 30);
 
-        if Total_X_Risk or Total_Y_Risk then
-            Risk := True;
-        end if;
+        Risk := Total_X_Risk or Total_Y_Risk;
 
         X_Risk := Current_X_Risk;
         Y_Risk := Current_Y_Risk;
