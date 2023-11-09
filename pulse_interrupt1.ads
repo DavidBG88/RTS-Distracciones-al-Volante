@@ -7,16 +7,16 @@ package pulse_interrupt is
    ------ declaracion de procedimientos de acceso a DISPOSITIVOS E/S  --
    ---------------------------------------------------------------------
 
-   Interr_1  : constant Time_Span := To_Time_Span (10);
-   Interr_2  : constant Time_Span := To_Time_Span (10);
-   Interr_3  : constant Time_Span := To_Time_Span (10);
-   Interr_4  : constant Time_Span := To_Time_Span (10);
-   Interr_5  : constant Time_Span := To_Time_Span (10);
-   Interr_6  : constant Time_Span := To_Time_Span (10);
-   Interr_7  : constant Time_Span := To_Time_Span (10);
-   Interr_8  : constant Time_Span := To_Time_Span (10);
-   Interr_9  : constant Time_Span := To_Time_Span (10);
-   Interr_10 : constant Time_Span := To_Time_Span (10);
+   Interr_1  : constant Time_Span := To_Time_Span (10.0);
+   Interr_2  : constant Time_Span := To_Time_Span (10.0);
+   Interr_3  : constant Time_Span := To_Time_Span (10.0);
+   Interr_4  : constant Time_Span := To_Time_Span (10.0);
+   Interr_5  : constant Time_Span := To_Time_Span (10.0);
+   Interr_6  : constant Time_Span := To_Time_Span (10.0);
+   Interr_7  : constant Time_Span := To_Time_Span (10.0);
+   Interr_8  : constant Time_Span := To_Time_Span (10.0);
+   Interr_9  : constant Time_Span := To_Time_Span (10.0);
+   Interr_10 : constant Time_Span := To_Time_Span (10.0);
 
    --------------------------------------------------------------------------
    -- Tarea que fuerza la interrupcion externa 2 en los instantes indicados --
