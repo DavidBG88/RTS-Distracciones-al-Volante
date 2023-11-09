@@ -68,12 +68,14 @@ package body Actuators is
                     else
                         Beep_Intensity := Volume'Max (2, Beep_Intensity);
                     end if;
+                    Beep_Value := True;
                 end if;
 
                 if Sintoma_Volante and not Sintoma_Cabeza and
-                   Sintoma_Distancia = Segura
+                    Sintoma_Distancia = Segura
                 then
                     Beep_Intensity := 1;
+                    Beep_Value := True;
                 end if;
 
                 -- Update actuators
