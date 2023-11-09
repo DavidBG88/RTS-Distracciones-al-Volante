@@ -1,5 +1,5 @@
-with Ada.Text_IO;   use Ada.Text_IO;
-with Ada.Real_Time; use Ada.Real_Time;
+with Kernel.Serial_Output; use Kernel.Serial_Output;
+with Ada.Real_Time;        use Ada.Real_Time;
 
 with devices; use devices;
 with tools;   use tools;
@@ -19,9 +19,9 @@ package body Sensors is
         Distancia : in     Distance_Samples_Type;
         Risk      :    out Sintoma_Distancia_Type);
     procedure Riesgo_Volante
-       (Prev_Steering_Angle : in Steering_Samples_Type;
+       (Prev_Steering_Angle : in     Steering_Samples_Type;
         Steering_Angle : in Steering_Samples_Type; Speed : Speed_Samples_Type;
-        Prev_V_Risk : in Boolean; V_Risk : out Boolean; Risk : out Boolean);
+        Risk                :    out Boolean);
 
     -- Tasks
 
@@ -93,8 +93,6 @@ package body Sensors is
         Next_Wake_Time : Time := Big_Bang + Task_Period;
 
         Risk                : Boolean               := False;
-        V_Risk              : Boolean               := False;
-        Prev_V_Risk         : Boolean               := False;
         Steering_Angle      : Steering_Samples_Type := 0;
         Prev_Steering_Angle : Steering_Samples_Type := 0;
         Speed               : Speed_Samples_Type    := 0;
@@ -103,10 +101,7 @@ package body Sensors is
             Starting_Notice (Task_Name);
 
             Reading_Steering (Steering_Angle);
-            Riesgo_Volante
-               (Prev_Steering_Angle, Steering_Angle, Speed, Prev_V_Risk,
-                V_Risk, Risk);
-            Prev_V_Risk         := V_Risk;
+            Riesgo_Volante (Prev_Steering_Angle, Steering_Angle, Speed, Risk);
             Prev_Steering_Angle := Steering_Angle;
             Sintomas.Update_Volante (Risk);
 
@@ -201,15 +196,14 @@ package body Sensors is
     end Riesgo_Distancia;
 
     procedure Riesgo_Volante
-       (Prev_Steering_Angle : in Steering_Samples_Type;
+       (Prev_Steering_Angle : in     Steering_Samples_Type;
         Steering_Angle : in Steering_Samples_Type; Speed : Speed_Samples_Type;
-        Prev_V_Risk : in Boolean; V_Risk : out Boolean; Risk : out Boolean)
+        Risk                :    out Boolean)
     is
         Angle_Diff : Integer := 0;
     begin
         Angle_Diff :=
            abs (Integer (Steering_Angle) - Integer (Prev_Steering_Angle));
-        V_Risk     := Angle_Diff >= 20 and Speed > 40;
-        Risk       := Prev_V_Risk and V_Risk;
+        Risk       := Angle_Diff >= 20 and Speed > 40;
     end Riesgo_Volante;
 end Sensors;

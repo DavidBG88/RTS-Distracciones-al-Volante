@@ -1,6 +1,5 @@
-with Ada.Text_IO; use Ada.Text_IO; -- compilador gnat
--- with Kernel.Serial_Output; use Kernel.Serial_Output;
-with Ada.Real_Time; use Ada.Real_Time;
+with Kernel.Serial_Output; use Kernel.Serial_Output;
+with Ada.Real_Time;        use Ada.Real_Time;
 --use type Ada.Real_Time.Time_Span;
 --with System; use System;
 

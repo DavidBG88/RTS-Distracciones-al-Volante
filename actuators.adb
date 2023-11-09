@@ -1,5 +1,5 @@
-with Ada.Text_IO;   use Ada.Text_IO;
-with Ada.Real_Time; use Ada.Real_Time;
+with Kernel.Serial_Output; use Kernel.Serial_Output;
+with Ada.Real_Time;        use Ada.Real_Time;
 
 with tools;   use tools;
 with devices; use devices;
