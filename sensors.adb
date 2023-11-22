@@ -38,9 +38,15 @@ package body Sensors is
         X_Risk         : Boolean                   := False;
         Y_Risk         : Boolean                   := False;
         Head_Risk      : Boolean                   := False;
+        
+        --STARTTIME : Time;
+        --ENDTIME : Time;
+        --MAXTIME : Duration;
     begin
         loop
             Starting_Notice (Task_Name);
+
+            --STARTTIME := Clock;
 
             Reading_HeadPosition (Head_Position);
             Reading_Steering (Steering_Angle);
@@ -50,6 +56,14 @@ package body Sensors is
             Sintomas.Update_Cabeza (Head_Risk);
             Prev_X_Risk := X_Risk;
             Prev_Y_Risk := Y_Risk;
+            
+            --ENDTIME := Clock;
+            --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
+                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if; 
+            --New_Line;
+            --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
+            --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
 
             Finishing_Notice (Task_Name);
             
@@ -67,9 +81,15 @@ package body Sensors is
         Distance_Risk : Sintoma_Distancia_Type := Segura;
         Distance      : Distance_Samples_Type  := 0;
         Speed         : Speed_Samples_Type     := 0;
+
+        --STARTTIME : Time;
+        --ENDTIME : Time;
+        --MAXTIME : Duration;
     begin
         loop
             Starting_Notice (Task_Name);
+
+            --STARTTIME := Clock;
 
             Reading_Speed (Speed);
             Reading_Distance (Distance);
@@ -77,7 +97,15 @@ package body Sensors is
             Riesgo_Distancia (Speed, Distance, Distance_Risk);
             Sintomas.Update_Distancia (Distance_Risk);
             Medidas.Update_Distancia (Distance);
-            Medidas.Update_Velocidad (Speed);
+            Medidas.Update_Velocidad (Speed); 
+            
+            --ENDTIME := Clock;
+            --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
+                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if; 
+            --New_Line;
+            --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
+            --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
 
             Finishing_Notice (Task_Name);
 
@@ -96,14 +124,28 @@ package body Sensors is
         Steering_Angle      : Steering_Samples_Type := 0;
         Prev_Steering_Angle : Steering_Samples_Type := 0;
         Speed               : Speed_Samples_Type    := 0;
+
+        --STARTTIME : Time;
+        --ENDTIME : Time;
+        --MAXTIME : Duration;
     begin
         loop
             Starting_Notice (Task_Name);
+
+            --STARTTIME := Clock;
 
             Reading_Steering (Steering_Angle);
             Riesgo_Volante (Prev_Steering_Angle, Steering_Angle, Speed, Risk);
             Prev_Steering_Angle := Steering_Angle;
             Sintomas.Update_Volante (Risk);
+            
+            --ENDTIME := Clock;
+            --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
+                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if; 
+            --New_Line;
+            --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
+            --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
 
             Finishing_Notice (Task_Name);
 
@@ -117,11 +159,17 @@ package body Sensors is
         Task_Period : constant Time_Span := Milliseconds (100);
 
         Modo_Sistema : Modo_Sistema_Type := M1;
+
+        --STARTTIME : Time;
+        --ENDTIME : Time;
+        --MAXTIME : Duration;
     begin
         loop
             Starting_Notice (Task_Name);
 
             Controlador_Modo.Esperar_Modo;
+
+            --STARTTIME := Clock;
 
             Modo_Sistema := Controlador_Modo.Get_Modo_Sistema;
 
@@ -138,8 +186,18 @@ package body Sensors is
             else
                 Controlador_Modo.Update_Modo_Sistema (M1);
             end if;
+            
+            --ENDTIME := Clock;
+            --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
+                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if; 
+            --New_Line;
+            --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
+            --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
 
             Finishing_Notice (Task_Name);
+
+            delay until Clock + Task_Period;
         end loop;
     end Task_Modo_Type;
 

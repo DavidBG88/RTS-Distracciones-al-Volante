@@ -9,7 +9,8 @@ package State is
     type Modo_Sistema_Type is (M1, M2, M3);
 
     protected Sintomas is
-        pragma Priority (6);
+        -- pragma Priority (6);
+        pragma Priority (7);
 
         procedure Update_Cabeza (Risk : Boolean);
         procedure Update_Distancia (Risk : Sintoma_Distancia_Type);
@@ -25,7 +26,8 @@ package State is
     end Sintomas;
 
     protected Medidas is
-        pragma Priority (4);
+        -- pragma Priority (4);
+        pragma Priority (7);
 
         procedure Update_Distancia (Distancia : in Distance_Samples_Type);
         procedure Update_Velocidad (Velocidad : in Speed_Samples_Type);
@@ -38,7 +40,7 @@ package State is
     end Medidas;
 
     protected Controlador_Modo is
-        pragma Priority (6);
+        pragma Priority (Priority_Of_External_Interrupts_2);
 
         procedure Interrupcion;
         pragma Attach_Handler

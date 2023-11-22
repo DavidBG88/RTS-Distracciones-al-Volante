@@ -25,9 +25,15 @@ package body Actuators is
         Prev_Light_Value : Light_States := Off;
 
         Modo_Sistema : Modo_Sistema_Type := M1;
+
+        --STARTTIME : Time;
+        --ENDTIME : Time;
+        --MAXTIME : Duration;
     begin
         loop
             Starting_Notice (Task_Name);
+
+            --STARTTIME := Clock;
 
             -- Store protected objects state
 
@@ -93,6 +99,14 @@ package body Actuators is
                 Prev_Light_Value := Light_Value;
             end if;
 
+            --ENDTIME := Clock;
+            --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
+                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if; 
+            --New_Line;
+            --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
+            --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
+
             Finishing_Notice (Task_Name);
 
             delay until Next_Wake_Time;
@@ -105,14 +119,15 @@ package body Actuators is
         Task_Period : constant Time_Span := Milliseconds (1_000);
 
         Next_Wake_Time : Time := Big_Bang + Task_Period;
-
-        STARTTIME : Time := Big_Bang;
-        ENDTIME   : Time_Span;
+        
+        --STARTTIME : Time;
+        --ENDTIME : Time;
+        --MAXTIME : Duration;
     begin
         loop
             Starting_Notice (Task_Name);
 
-            STARTTIME := clock;
+            --STARTTIME := Clock;
 
             New_Line;
             New_Line;
@@ -143,9 +158,14 @@ package body Actuators is
             else
                 Put_Line ("    Volante:   OK");
             end if;
-
-            ENDTIME := clock - STARTTIME;
-            Put_Line ("TIEMPO WCET: " & Duration'Image (To_Duration (ENDTIME)));
+            
+            --ENDTIME := Clock;
+            --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
+                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if; 
+            --New_Line;
+            --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
+            --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
 
             Finishing_Notice (Task_Name);
 
