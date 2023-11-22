@@ -52,7 +52,7 @@ package body Sensors is
             Prev_Y_Risk := Y_Risk;
 
             Finishing_Notice (Task_Name);
-
+            
             delay until Next_Wake_Time;
             Next_Wake_Time := Next_Wake_Time + Task_Period;
         end loop;

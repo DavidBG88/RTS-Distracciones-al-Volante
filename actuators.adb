@@ -105,9 +105,14 @@ package body Actuators is
         Task_Period : constant Time_Span := Milliseconds (1_000);
 
         Next_Wake_Time : Time := Big_Bang + Task_Period;
+
+        STARTTIME : Time := Big_Bang;
+        ENDTIME   : Time_Span;
     begin
         loop
             Starting_Notice (Task_Name);
+
+            STARTTIME := clock;
 
             New_Line;
             New_Line;
@@ -138,6 +143,9 @@ package body Actuators is
             else
                 Put_Line ("    Volante:   OK");
             end if;
+
+            ENDTIME := clock - STARTTIME;
+            Put_Line ("TIEMPO WCET: " & Duration'Image (To_Duration (ENDTIME)));
 
             Finishing_Notice (Task_Name);
 

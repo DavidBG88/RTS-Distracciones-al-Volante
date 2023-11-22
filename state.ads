@@ -2,12 +2,15 @@ with Ada.Interrupts.Names;
 
 with devices;         use devices;
 with pulse_interrupt; use pulse_interrupt;
+with tools;           use tools;
 
 package State is
     type Sintoma_Distancia_Type is (Segura, Insegura, Imprudente, Colision);
     type Modo_Sistema_Type is (M1, M2, M3);
 
     protected Sintomas is
+        pragma Priority (6);
+
         procedure Update_Cabeza (Risk : Boolean);
         procedure Update_Distancia (Risk : Sintoma_Distancia_Type);
         procedure Update_Volante (Risk : Boolean);
@@ -22,6 +25,8 @@ package State is
     end Sintomas;
 
     protected Medidas is
+        pragma Priority (4);
+
         procedure Update_Distancia (Distancia : in Distance_Samples_Type);
         procedure Update_Velocidad (Velocidad : in Speed_Samples_Type);
 
@@ -33,7 +38,7 @@ package State is
     end Medidas;
 
     protected Controlador_Modo is
-        pragma Priority (Priority_Of_External_Interrupts_2);
+        pragma Priority (6);
 
         procedure Interrupcion;
         pragma Attach_Handler

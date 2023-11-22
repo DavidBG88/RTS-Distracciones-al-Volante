@@ -20,12 +20,12 @@ with State;     use State;
 
 -- | Task      | Period (ms) | Deadline (ms) | Priority |
 -- | --------- | ----------- | ------------- | -------- |
--- | Cabeza    | 400         | 100           | 50       |
--- | Distancia | 300         | 300           | 30       |
--- | Volante   | 350         | 350           | 20       |
--- | Riesgos   | 150         | 150           | 40       |
--- | Display   | 1000        | 1000          | 10       |
--- | Modo      | X           | X             | 60       |
+-- | Cabeza    | 400         | 100           | 5        |
+-- | Distancia | 300         | 300           | 3        |
+-- | Volante   | 350         | 350           | 2        |
+-- | Riesgos   | 150         | 150           | 4        |
+-- | Display   | 1000        | 1000          | 1        |
+-- | Modo      | 100         | 100           | 6        |
 
 package body add is
    Task_Cabeza    : Task_Cabeza_Type;

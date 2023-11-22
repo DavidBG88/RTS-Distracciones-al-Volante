@@ -70,7 +70,7 @@ package body tools is
    --     PROCEDIMIENTO QUE HACE CALCULOS                             --
    ---------------------------------------------------------------------
    Time_per_Kwhetstones : constant Ada.Real_Time.Time_Span :=
-     Ada.Real_Time.Nanoseconds (2_273_176); -- anterior (479936);
+     Ada.Real_Time.Nanoseconds (660000); -- anterior (479936);
 
    procedure Execution_Time (Time : Ada.Real_Time.Time_Span) is
 
