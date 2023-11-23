@@ -1,0 +1,24 @@
+Response time analysis for task set SistemaDistraccionesVolante_STR
+-------------------------------------------------------------------
+
+Id Task      A PR  Period  Offset  Jitter  Budget   Block Deadline Response Sch
+-- --------- - -- ------- ------- ------- ------- ------- -------- -------- ---
+ 1 Modo      I  6 100.000   0.000   0.000  11.000   6.000  100.000   17.000 Yes
+ 2 t-Cabeza  P  5 400.000   0.000   0.000  16.000   6.000  100.000   33.000 Yes
+ 3 t-Riesgos P  4 150.000   0.000   0.000  88.000   8.000  150.000  134.000 Yes
+ 4 t-DistanciP  3 300.000   0.000   0.000  41.000   6.000  300.000  272.000 Yes
+ 5 t-Volante P  2 350.000   0.000   0.000  12.000   6.000  350.000  284.000 Yes
+ 6 t-Display P  11000.000   0.000   0.000  66.000   0.000 1000.000  900.000 Yes
+
+
+Priority ceilings for shared resources
+--------------------------------------
+
+Id Name      PR
+-- --------- --
+ 1 Modo       6
+ 2 Sintomas   6
+ 3 Medidas    4
+
+
+Total processor utilization :  97.36%
