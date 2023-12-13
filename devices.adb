@@ -1,11 +1,12 @@
 with Kernel.Serial_Output; use Kernel.Serial_Output;
 with System;               use System;
 with tools;                use tools;
+with control;              use control;
 
 package body devices is
    procedure Reading_Speed (V : out Speed_Samples_Type) is
    begin
-      V := 0;
+      V := Leer_Sensor (3) * 200 / 1024;
    end Reading_Speed;
 
    procedure Reading_HeadPosition (H : out HeadPosition_Samples_Type) is
@@ -15,7 +16,7 @@ package body devices is
 
    procedure Reading_Steering (S : out Steering_Samples_Type) is
    begin
-      S := 20;
+      S := (Leer_Sensor(2) * 360 / 1024) - 180;
    end Reading_Steering;
 
    -----------------------------------------------------------------------------
