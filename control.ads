@@ -4,10 +4,6 @@ with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 with Ada.Real_Time;       use Ada.Real_Time;
 
 package control is
-
-   --  Declare then export an Integer entity called num_from_Ada
-   n : Integer := 7;
-
    type Tabla_sensores is array (1 .. 8) of Integer;
    --sensores: Tabla_sensores;
 

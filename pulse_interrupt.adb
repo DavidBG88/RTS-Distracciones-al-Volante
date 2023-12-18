@@ -1,4 +1,4 @@
-with Kernel.Serial_Output; use Kernel.Serial_Output;
+with Ada.Text_IO; use Ada.Text_IO;
 
 with System; use System;
 with Force_External_Interrupt_2;

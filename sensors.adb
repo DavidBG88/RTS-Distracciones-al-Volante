@@ -1,5 +1,5 @@
-with Kernel.Serial_Output; use Kernel.Serial_Output;
-with Ada.Real_Time;        use Ada.Real_Time;
+with Ada.Text_IO;   use Ada.Text_IO;
+with Ada.Real_Time; use Ada.Real_Time;
 
 with devices; use devices;
 with tools;   use tools;
@@ -38,7 +38,7 @@ package body Sensors is
         X_Risk         : Boolean                   := False;
         Y_Risk         : Boolean                   := False;
         Head_Risk      : Boolean                   := False;
-        
+
         --STARTTIME : Time;
         --ENDTIME : Time;
         --MAXTIME : Duration;
@@ -56,17 +56,17 @@ package body Sensors is
             Sintomas.Update_Cabeza (Head_Risk);
             Prev_X_Risk := X_Risk;
             Prev_Y_Risk := Y_Risk;
-            
+
             --ENDTIME := Clock;
             --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
-                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
-            --end if; 
+            --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if;
             --New_Line;
             --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
             --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
 
             Finishing_Notice (Task_Name);
-            
+
             delay until Next_Wake_Time;
             Next_Wake_Time := Next_Wake_Time + Task_Period;
         end loop;
@@ -97,12 +97,12 @@ package body Sensors is
             Riesgo_Distancia (Speed, Distance, Distance_Risk);
             Sintomas.Update_Distancia (Distance_Risk);
             Medidas.Update_Distancia (Distance);
-            Medidas.Update_Velocidad (Speed); 
-            
+            Medidas.Update_Velocidad (Speed);
+
             --ENDTIME := Clock;
             --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
-                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
-            --end if; 
+            --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if;
             --New_Line;
             --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
             --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
@@ -138,11 +138,11 @@ package body Sensors is
             Riesgo_Volante (Prev_Steering_Angle, Steering_Angle, Speed, Risk);
             Prev_Steering_Angle := Steering_Angle;
             Sintomas.Update_Volante (Risk);
-            
+
             --ENDTIME := Clock;
             --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
-                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
-            --end if; 
+            --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if;
             --New_Line;
             --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
             --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
@@ -186,11 +186,11 @@ package body Sensors is
             else
                 Controlador_Modo.Update_Modo_Sistema (M1);
             end if;
-            
+
             --ENDTIME := Clock;
             --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
-                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
-            --end if; 
+            --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if;
             --New_Line;
             --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
             --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));

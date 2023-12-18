@@ -1,5 +1,5 @@
-with Kernel.Serial_Output; use Kernel.Serial_Output;
-with Ada.Real_Time;        use Ada.Real_Time;
+with Ada.Text_IO;   use Ada.Text_IO;
+with Ada.Real_Time; use Ada.Real_Time;
 
 with tools;   use tools;
 with devices; use devices;
@@ -78,10 +78,10 @@ package body Actuators is
                 end if;
 
                 if Sintoma_Volante and not Sintoma_Cabeza and
-                    Sintoma_Distancia = Segura
+                   Sintoma_Distancia = Segura
                 then
                     Beep_Intensity := 1;
-                    Beep_Value := True;
+                    Beep_Value     := True;
                 end if;
 
                 -- Update actuators
@@ -101,8 +101,8 @@ package body Actuators is
 
             --ENDTIME := Clock;
             --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
-                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
-            --end if; 
+            --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if;
             --New_Line;
             --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
             --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));
@@ -119,7 +119,7 @@ package body Actuators is
         Task_Period : constant Time_Span := Milliseconds (1_000);
 
         Next_Wake_Time : Time := Big_Bang + Task_Period;
-        
+
         --STARTTIME : Time;
         --ENDTIME : Time;
         --MAXTIME : Duration;
@@ -158,11 +158,11 @@ package body Actuators is
             else
                 Put_Line ("    Volante:   OK");
             end if;
-            
+
             --ENDTIME := Clock;
             --if To_Duration(ENDTIME - STARTTIME) > MAXTIME then
-                --MAXTIME := To_Duration(ENDTIME - STARTTIME);
-            --end if; 
+            --MAXTIME := To_Duration(ENDTIME - STARTTIME);
+            --end if;
             --New_Line;
             --Put_Line("Tiempo ejecucion: " & Duration'Image(To_Duration(ENDTIME - STARTTIME)));
             --Put_Line("Max Tiempo ejecucion: " & Duration'Image(MAXTIME));

@@ -1,13 +1,13 @@
-with Kernel.Serial_Output; use Kernel.Serial_Output;
-with Ada.Real_Time;        use Ada.Real_Time;
-with System;               use System;
+with Ada.Text_IO;   use Ada.Text_IO;
+with Ada.Real_Time; use Ada.Real_Time;
+with System;        use System;
 
 with tools;   use tools;
 with devices; use devices;
 
 -- Packages needed to generate pulse interrupts
-with Ada.Interrupts.Names;
-with pulse_interrupt; use pulse_interrupt;
+--with Ada.Interrupts.Names;
+--with pulse_interrupt; use pulse_interrupt;
 
 -- Import tasks packages
 with Sensors;   use Sensors;

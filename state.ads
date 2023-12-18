@@ -1,8 +1,7 @@
 with Ada.Interrupts.Names;
 
-with devices;         use devices;
-with pulse_interrupt; use pulse_interrupt;
-with tools;           use tools;
+with devices; use devices;
+with tools;   use tools;
 
 package State is
     type Sintoma_Distancia_Type is (Segura, Insegura, Imprudente, Colision);
@@ -40,11 +39,11 @@ package State is
     end Medidas;
 
     protected Controlador_Modo is
-        pragma Priority (Priority_Of_External_Interrupts_2);
+        --pragma Priority (Priority_Of_External_Interrupts_2);
 
-        procedure Interrupcion;
-        pragma Attach_Handler
-           (Interrupcion, Ada.Interrupts.Names.External_Interrupt_2);
+        --  procedure Interrupcion;
+        --   pragma Attach_Handler
+        --       (Interrupcion, Ada.Interrupts.Names.External_Interrupt_2);
 
         entry Esperar_Modo;
 
