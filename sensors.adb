@@ -259,6 +259,6 @@ package body Sensors is
     begin
         Angle_Diff :=
            abs (Integer (Steering_Angle) - Integer (Prev_Steering_Angle));
-        Risk       := Angle_Diff >= 20 and Speed > 40;
+        Risk       := Angle_Diff >= 20;
     end Riesgo_Volante;
 end Sensors;

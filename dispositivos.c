@@ -39,6 +39,8 @@ void RTI() {
     printf("\n ----/----> \n");
 }
 
+int fd;
+
 int Inicializar_dispositivos() {
 
     system("gpio load spi");
@@ -68,6 +70,9 @@ int Inicializar_dispositivos() {
     pinMode(PIN_libre, INPUT);  // 0
 
     pinMode(PIN_pwm, PWM_OUTPUT);  // 1 Set PWM LED as PWM output
+
+    fd = wiringPiI2CSetup(0x68);
+    wiringPiI2CWriteReg8(fd, 0x6B, 0x00);  //disable sleep mode
 
     printf("---- Devices configured \n");
 
@@ -171,12 +176,6 @@ int Mover_Servo(int posicion) {
 
 int Cerrar_Dispositivos() {
     printf("---- Se cierran los dispositivos \n");
-}
-
-int fd;
-void Inicializar_dispositivos() {
-    ..........fd = wiringPiI2CSetup(0x68);
-    wiringPiI2CWriteReg8(fd, 0x6B, 0x00);  //disable sleep mode
 }
 
 double dist(double a, double b) {

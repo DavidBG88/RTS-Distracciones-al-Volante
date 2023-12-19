@@ -15,7 +15,9 @@ package body devices is
 
    procedure Reading_HeadPosition (H : out HeadPosition_Samples_Type) is
    begin
-      H := (0, 0);
+      H :=
+        (HeadPosition_Samples_Values (Leer_X_Giroscopo),
+         HeadPosition_Samples_Values (Leer_Y_Giroscopo));
    end Reading_HeadPosition;
 
    procedure Reading_Distance (L : out Distance_Samples_Type) is
@@ -69,16 +71,17 @@ package body devices is
    -----------------------------------------------------------------------------
 
    procedure Light (E : Light_States) is
+      ret : Integer := 0;
    begin
       Current_Time (Big_Bang);
       case E is
          when On =>
-            Poner_Led_Rojo (0);
-            Poner_Led_Verde (1);
+            ret := Poner_Led_Rojo (0);
+            ret := Poner_Led_Verde (1);
             --Put ("............Light: ^ON^");
          when Off =>
-            Poner_Led_Rojo (1);
-            Poner_Led_Verde (0);
+            ret := Poner_Led_Rojo (1);
+            ret := Poner_Led_Verde (0);
             --Put ("............Light: _off_");
       end case;
    end Light;
