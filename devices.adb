@@ -19,7 +19,7 @@ package body devices is
 
    procedure Reading_Distance (L : out Distance_Samples_Type) is
    begin
-      L := Distance_Samples_Type (0);
+      L := Distance_Samples_Type (Sensor_infrarrojos * 150);
    end Reading_Distance;
 
    procedure Reading_Steering (S : out Steering_Samples_Type) is

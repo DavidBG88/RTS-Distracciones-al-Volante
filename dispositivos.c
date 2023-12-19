@@ -1,3 +1,5 @@
+#include "dispositivos.h"
+
 #include <errno.h>
 #include <stdint.h>
 #include <stdio.h>  // Used for printf() statements
@@ -37,7 +39,7 @@ void RTI() {
     printf("\n ----/----> \n");
 }
 
-void Inicializar_dispositivos() {
+int Inicializar_dispositivos() {
 
     system("gpio load spi");
 
