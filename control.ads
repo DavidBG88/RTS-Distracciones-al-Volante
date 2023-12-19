@@ -40,4 +40,10 @@ package control is
    function Girar_Motor (giro : in Integer) return Integer;
    pragma Import (C, Girar_Motor, "Mover_Servo");
 
+   function Leer_X_Giroscopo return Integer;
+   pragma Import (C, Leer_X_Giroscopo, "Leer_X_Giroscopo");
+
+   function Leer_Y_Giroscopo return Integer;
+   pragma Import (C, Leer_Y_Giroscopo, "Leer_Y_Giroscopo");
+
 end control;

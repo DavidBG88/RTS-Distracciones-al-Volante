@@ -172,3 +172,66 @@ int Mover_Servo(int posicion) {
 int Cerrar_Dispositivos() {
     printf("---- Se cierran los dispositivos \n");
 }
+
+int fd;
+void Inicializar_dispositivos() {
+    ..........fd = wiringPiI2CSetup(0x68);
+    wiringPiI2CWriteReg8(fd, 0x6B, 0x00);  //disable sleep mode
+}
+
+double dist(double a, double b) {
+    return sqrt((a * a) + (b * b));
+}
+
+int read_word_2c(int addr) {
+    int val;
+    val = wiringPiI2CReadReg8(fd, addr);
+    val = val << 8;
+    val += wiringPiI2CReadReg8(fd, addr + 1);
+    if (val >= 0x8000)
+        val = -(65536 - val);
+
+    return val;
+}
+
+double get_y_rotation(double x, double y, double z) {
+    double radians;
+    radians = atan2(x, dist(y, z));
+    return -(radians * (180.0 / M_PI));
+}
+
+double get_x_rotation(double x, double y, double z) {
+    double radians;
+    radians = atan2(y, dist(x, z));
+    return (radians * (180.0 / M_PI));
+}
+
+int Leer_X_Giroscopo() {
+
+    int acclX, acclY, acclZ;
+    double acclX_scaled, acclY_scaled, acclZ_scaled;
+    acclX = read_word_2c(0x3B);
+    acclY = read_word_2c(0x3D);
+    acclZ = read_word_2c(0x3F);
+
+    acclX_scaled = acclX / 16384.0;
+    acclY_scaled = acclY / 16384.0;
+    acclZ_scaled = acclZ / 16384.0;
+
+    return get_x_rotation(acclX_scaled, acclY_scaled, acclZ_scaled);
+}
+
+int Leer_Y_Giroscopo() {
+
+    int acclX, acclY, acclZ;
+    double acclX_scaled, acclY_scaled, acclZ_scaled;
+    acclX = read_word_2c(0x3B);
+    acclY = read_word_2c(0x3D);
+    acclZ = read_word_2c(0x3F);
+
+    acclX_scaled = acclX / 16384.0;
+    acclY_scaled = acclY / 16384.0;
+    acclZ_scaled = acclZ / 16384.0;
+
+    return get_y_rotation(acclX_scaled, acclY_scaled, acclZ_scaled);
+}
