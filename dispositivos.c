@@ -1,6 +1,7 @@
 #include "dispositivos.h"
 
 #include <errno.h>
+#include <math.h>
 #include <stdint.h>
 #include <stdio.h>  // Used for printf() statements
 #include <stdlib.h>
