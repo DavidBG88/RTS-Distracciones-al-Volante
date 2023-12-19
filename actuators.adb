@@ -77,8 +77,8 @@ package body Actuators is
                     Beep_Value := True;
                 end if;
 
-                if Sintoma_Volante and not Sintoma_Cabeza and
-                   Sintoma_Distancia = Segura
+                if Sintoma_Volante and Medidas.Get_Velocidad > 40 and
+                   not Sintoma_Cabeza and Sintoma_Distancia = Segura
                 then
                     Beep_Intensity := 1;
                     Beep_Value     := True;

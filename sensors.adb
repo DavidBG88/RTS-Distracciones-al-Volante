@@ -19,9 +19,8 @@ package body Sensors is
         Distancia : in     Distance_Samples_Type;
         Risk      :    out Sintoma_Distancia_Type);
     procedure Riesgo_Volante
-       (Prev_Steering_Angle : in     Steering_Samples_Type;
-        Steering_Angle : in Steering_Samples_Type; Speed : Speed_Samples_Type;
-        Risk                :    out Boolean);
+       (Prev_Steering_Angle : in Steering_Samples_Type;
+        Steering_Angle      : in Steering_Samples_Type; Risk : out Boolean);
 
     -- Tasks
 
@@ -123,7 +122,6 @@ package body Sensors is
         Risk                : Boolean               := False;
         Steering_Angle      : Steering_Samples_Type := 0;
         Prev_Steering_Angle : Steering_Samples_Type := 0;
-        Speed               : Speed_Samples_Type    := 0;
 
         --STARTTIME : Time;
         --ENDTIME : Time;
@@ -135,7 +133,7 @@ package body Sensors is
             --STARTTIME := Clock;
 
             Reading_Steering (Steering_Angle);
-            Riesgo_Volante (Prev_Steering_Angle, Steering_Angle, Speed, Risk);
+            Riesgo_Volante (Prev_Steering_Angle, Steering_Angle, Risk);
             Prev_Steering_Angle := Steering_Angle;
             Sintomas.Update_Volante (Risk);
 
@@ -254,9 +252,8 @@ package body Sensors is
     end Riesgo_Distancia;
 
     procedure Riesgo_Volante
-       (Prev_Steering_Angle : in     Steering_Samples_Type;
-        Steering_Angle : in Steering_Samples_Type; Speed : Speed_Samples_Type;
-        Risk                :    out Boolean)
+       (Prev_Steering_Angle : in Steering_Samples_Type;
+        Steering_Angle      : in Steering_Samples_Type; Risk : out Boolean)
     is
         Angle_Diff : Integer := 0;
     begin

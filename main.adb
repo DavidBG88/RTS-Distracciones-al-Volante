@@ -1,11 +1,15 @@
 with add;
 with System;
-with control;     use control;
+with control; use control;
 
 procedure main is
    pragma Priority (System.Priority'First);
-   device_init_status : Integer;
+   ret : Integer;
 begin
-   device_init_status := Inicializar_dispositivos();
+   ret := Inicializar_dispositivos;
+
+   ret := Poner_Led_Rojo (0);
+   ret := Poner_Led_Verde (1);
+
    add.Background;
 end main;

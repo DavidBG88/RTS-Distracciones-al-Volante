@@ -54,16 +54,18 @@ package body tools is
 
    procedure Starting_Notice (T : in String) is
    begin
-      Current_Time (Big_Bang);
-      Put (">>> ");
-      Put (T);
+      null;
+      --Current_Time (Big_Bang);
+      --Put (">>> ");
+      --Put (T);
    end Starting_Notice;
 
    procedure Finishing_Notice (T : in String) is
    begin
-      Current_Time (Big_Bang);
-      Put ("--- ");
-      Put (T);
+      null;
+      --Current_Time (Big_Bang);
+      --Put ("--- ");
+      --Put (T);
    end Finishing_Notice;
 
    ---------------------------------------------------------------------
