@@ -40,6 +40,10 @@ void RTI() {
     printf("\n ----/----> \n");
 }
 
+void EspInt() {
+    pthread_mutex_lock(&mymutex2);
+}
+
 int fd;
 
 int Inicializar_dispositivos() {
