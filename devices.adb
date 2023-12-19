@@ -6,6 +6,7 @@ with control;     use control;
 package body devices is
    SENSOR_VELOCIDAD : constant Integer := 3;
    SENSOR_VOLANTE   : constant Integer := 2;
+   SENSOR_DISTANCIA : constant Integer := 1;
 
    procedure Reading_Speed (V : out Speed_Samples_Type) is
    begin
@@ -19,7 +20,8 @@ package body devices is
 
    procedure Reading_Distance (L : out Distance_Samples_Type) is
    begin
-      L := Distance_Samples_Type (Sensor_infrarrojos * 150);
+      L :=
+        Distance_Samples_Type (Leer_Sensor (SENSOR_DISTANCIA) * 150 / 1_024);
    end Reading_Distance;
 
    procedure Reading_Steering (S : out Steering_Samples_Type) is
