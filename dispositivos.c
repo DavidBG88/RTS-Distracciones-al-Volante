@@ -2,6 +2,7 @@
 
 #include <errno.h>
 #include <math.h>
+#include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>  // Used for printf() statements
 #include <stdlib.h>
@@ -40,7 +41,7 @@ void RTI() {
     printf("\n ----/----> \n");
 }
 
-void EspInt() {
+int EspInt() {
     pthread_mutex_lock(&mymutex2);
 }
 

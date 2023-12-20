@@ -76,12 +76,12 @@ package body devices is
       Current_Time (Big_Bang);
       case E is
          when On =>
-            ret := Poner_Led_Rojo (0);
-            ret := Poner_Led_Verde (1);
-            --Put ("............Light: ^ON^");
-         when Off =>
             ret := Poner_Led_Rojo (1);
             ret := Poner_Led_Verde (0);
+            --Put ("............Light: ^ON^");
+         when Off =>
+            ret := Poner_Led_Rojo (0);
+            ret := Poner_Led_Verde (1);
             --Put ("............Light: _off_");
       end case;
    end Light;

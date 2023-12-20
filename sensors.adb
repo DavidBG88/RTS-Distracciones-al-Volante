@@ -3,6 +3,7 @@ with Ada.Real_Time; use Ada.Real_Time;
 
 with devices; use devices;
 with tools;   use tools;
+with control; use control;
 
 with State; use State;
 
@@ -158,6 +159,8 @@ package body Sensors is
 
         Modo_Sistema : Modo_Sistema_Type := M1;
 
+        ret : Integer := 0;
+
         --STARTTIME : Time;
         --ENDTIME : Time;
         --MAXTIME : Duration;
@@ -165,7 +168,7 @@ package body Sensors is
         loop
             Starting_Notice (Task_Name);
 
-            Controlador_Modo.Esperar_Modo;
+            ret := Esp_Int;
 
             --STARTTIME := Clock;
 

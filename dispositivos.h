@@ -10,6 +10,8 @@
 // #define TRUE 1
 // #define FALSE 0
 
+int EspInt();
+
 int Inicializar_dispositivos();
 
 int analogRead(int pin);
@@ -31,8 +33,13 @@ int Mover_Servo(int posicion);
 int Cerrar_Dispositivos();
 
 int Leer_X_Giroscopo();
+
 int Leer_Y_Giroscopo();
+
 double get_x_rotation(double x, double y, double z);
+
 double get_y_rotation(double x, double y, double z);
+
 double dist(double a, double b);
+
 int read_word_2c(int addr);

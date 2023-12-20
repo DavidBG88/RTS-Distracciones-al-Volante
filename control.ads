@@ -46,4 +46,7 @@ package control is
    function Leer_Y_Giroscopo return Integer;
    pragma Import (C, Leer_Y_Giroscopo, "Leer_Y_Giroscopo");
 
+   function Esp_Int return Integer;
+   pragma Import (C, Esp_Int, "EspInt");
+
 end control;
