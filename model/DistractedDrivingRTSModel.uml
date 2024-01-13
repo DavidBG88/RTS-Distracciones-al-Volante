@@ -8,235 +8,189 @@
       <importedPackage xmi:type="uml:Package" href="pathmap://SysML16_LIBRARIES/SysML-Standard-Library.uml#SysML.package_packagedElement_Libraries"/>
     </packageImport>
     <packagedElement xmi:type="uml:Package" xmi:id="_AIGBcLFjEe6TlvSlQcc85A" name="Diagrams">
-      <packagedElement xmi:type="uml:Class" xmi:id="_eYZ5ELF1Ee6TlvSlQcc85A" name="Control">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_h5kSsLF1Ee6TlvSlQcc85A" name="Inicializar_dispositivos">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_zaqK4LF1Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_0uoUMLF1Ee6TlvSlQcc85A" name="Leer_Sensores">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_7UyI0LF1Ee6TlvSlQcc85A" name="Sensores" type="_6zfZoLF1Ee6TlvSlQcc85A" direction="out"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_8PlkMLF1Ee6TlvSlQcc85A" name="Leer_Sensor">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_AV__8LF2Ee6TlvSlQcc85A" name="pin" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_J-rxcLF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Ay27ELF2Ee6TlvSlQcc85A" name="Leer_Pulsador">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_GK9BILF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_KbGAoLF2Ee6TlvSlQcc85A" name="Poner_Led_Rojo">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UaC9ELF2Ee6TlvSlQcc85A" name="Led_Rojo" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_WmaG8LF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_YCbZALF2Ee6TlvSlQcc85A" name="Poner_Led_Verde">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_dC0wwLF2Ee6TlvSlQcc85A" name="Led_Verde" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fDHNgLF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_ftUBELF2Ee6TlvSlQcc85A" name="Sensor_Infrarrojos">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_lE-CQLF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_lhN5YLF2Ee6TlvSlQcc85A" name="Activar_Trigger">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_p5jLkLF2Ee6TlvSlQcc85A" name="Valor_Trig" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_tpSMsLF2Ee6TlvSlQcc85A" name="Leer_Echo">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_xMw6gLF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_y9OLgLF2Ee6TlvSlQcc85A" name="Cerrar">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2URm4LF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_5u0bILF2Ee6TlvSlQcc85A" name="Girar_Motor">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_9loUoLF2Ee6TlvSlQcc85A" name="Giro" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="___oR4LF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_AYW68LF3Ee6TlvSlQcc85A" name="Leer_X_Giroscopo">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_FkqAsLF3Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_GAWeMLF3Ee6TlvSlQcc85A" name="Leer_Y_Giroscopo">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ohk4YLF3Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_QTm2sLF3Ee6TlvSlQcc85A" name="Esp_Int">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TnfCQLF3Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
-        </ownedOperation>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_FWo9YLF4Ee6TlvSlQcc85A" memberEnd="_FWtO0LF4Ee6TlvSlQcc85A _FWt14LF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FWsAsLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FWsAsbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_FWtO0LF4Ee6TlvSlQcc85A" name="giroscopio" type="_exo8oLFuEe6TlvSlQcc85A" aggregation="composite" association="_FWo9YLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_FWt14LF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_FWo9YLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_L26McLF4Ee6TlvSlQcc85A" memberEnd="_L26Mc7F4Ee6TlvSlQcc85A _L26zgLF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L26McbF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L26McrF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_L26Mc7F4Ee6TlvSlQcc85A" name="luces de aviso" type="_xRPEcLFuEe6TlvSlQcc85A" aggregation="composite" association="_L26McLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_L26zgLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_L26McLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_YyQBgLF4Ee6TlvSlQcc85A" memberEnd="_YyRPorF4Ee6TlvSlQcc85A _YyR2sLF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YyRPoLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YyRPobF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_YyRPorF4Ee6TlvSlQcc85A" name="giro del volante" type="_iaPbALFuEe6TlvSlQcc85A" aggregation="composite" association="_YyQBgLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_YyR2sLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_YyQBgLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_aUzZYLF4Ee6TlvSlQcc85A" memberEnd="_aU0ngbF4Ee6TlvSlQcc85A _aU1OkLF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aU0AcLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aU0ngLF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_aU0ngbF4Ee6TlvSlQcc85A" name="display" type="_zrzCYLFuEe6TlvSlQcc85A" aggregation="composite" association="_aUzZYLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_aU1OkLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_aUzZYLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_dYQjULF4Ee6TlvSlQcc85A" memberEnd="_dYRxcrF4Ee6TlvSlQcc85A _dYSYgLF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dYRxcLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dYRxcbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_dYRxcrF4Ee6TlvSlQcc85A" name="freno" type="_3eKgwLFuEe6TlvSlQcc85A" aggregation="composite" association="_dYQjULF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_dYSYgLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_dYQjULF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_fTbPgLF4Ee6TlvSlQcc85A" memberEnd="_fTcdorF4Ee6TlvSlQcc85A _fTdEsLF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fTcdoLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fTcdobF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_fTcdorF4Ee6TlvSlQcc85A" name="sensor de distancia" type="_tbb3kLFuEe6TlvSlQcc85A" aggregation="composite" association="_fTbPgLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_fTdEsLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_fTbPgLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_igiEsLF4Ee6TlvSlQcc85A" memberEnd="_igirwrF4Ee6TlvSlQcc85A _igjS0LF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_igirwLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_igirwbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_igirwrF4Ee6TlvSlQcc85A" name="acelerómetro 1" type="_7yvUULFuEe6TlvSlQcc85A" aggregation="composite" association="_igiEsLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_igjS0LF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_igiEsLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_kDr5gLF4Ee6TlvSlQcc85A" memberEnd="_kDsgkrF4Ee6TlvSlQcc85A _kDtusLF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kDsgkLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kDsgkbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_kDsgkrF4Ee6TlvSlQcc85A" name="agarre volante" type="_5br9YLFuEe6TlvSlQcc85A" aggregation="composite" association="_kDr5gLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_kDtusLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_kDr5gLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_sZ7ywLF4Ee6TlvSlQcc85A" memberEnd="_sZ9A4LF4Ee6TlvSlQcc85A _sZ9A4bF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sZ8Z0LF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sZ8Z0bF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_sZ9A4LF4Ee6TlvSlQcc85A" name="velocímetro" type="_pD7r0LFuEe6TlvSlQcc85A" aggregation="composite" association="_sZ7ywLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_sZ9A4bF4Ee6TlvSlQcc85A" type="_kDr5gLF4Ee6TlvSlQcc85A" association="_sZ7ywLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_tUG8ALF4Ee6TlvSlQcc85A" memberEnd="_tUIKIrF4Ee6TlvSlQcc85A _tUIKI7F4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tUIKILF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tUIKIbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_tUIKIrF4Ee6TlvSlQcc85A" name="acelerómetro 2" type="_90xdgLFuEe6TlvSlQcc85A" aggregation="composite" association="_tUG8ALF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_tUIKI7F4Ee6TlvSlQcc85A" type="_kDr5gLF4Ee6TlvSlQcc85A" association="_tUG8ALF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_uFyQkLF4Ee6TlvSlQcc85A" memberEnd="_uFzesrF4Ee6TlvSlQcc85A _uFzes7F4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_uFzesLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_uFzesbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_uFzesrF4Ee6TlvSlQcc85A" name="alarma" type="_1OsYgLFuEe6TlvSlQcc85A" aggregation="composite" association="_uFyQkLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_uFzes7F4Ee6TlvSlQcc85A" type="_kDr5gLF4Ee6TlvSlQcc85A" association="_uFyQkLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_40P-YLF4Ee6TlvSlQcc85A" memberEnd="_40QlcrF4Ee6TlvSlQcc85A _40RMgLF4Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_40QlcLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_40QlcbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_40QlcrF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" aggregation="composite" association="_40P-YLF4Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_40RMgLF4Ee6TlvSlQcc85A" name="distracted driving rts" type="_YYkiwLFjEe6TlvSlQcc85A" association="_40P-YLF4Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_zJMDkLF5Ee6TlvSlQcc85A" memberEnd="_zJMqorF5Ee6TlvSlQcc85A _zJNRsLF5Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zJMqoLF5Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zJMqobF5Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_zJMqorF5Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_zJMDkLF5Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_zJNRsLF5Ee6TlvSlQcc85A" name="devices" type="_Nf4TMLFpEe6TlvSlQcc85A" association="_zJMDkLF5Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_SYRVwLF6Ee6TlvSlQcc85A" memberEnd="_SYSj4rF6Ee6TlvSlQcc85A _SYTyALF6Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SYSj4LF6Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SYSj4bF6Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_SYSj4rF6Ee6TlvSlQcc85A" name="protected medidas" type="_H0x8ILFqEe6TlvSlQcc85A" aggregation="composite" association="_SYRVwLF6Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_SYTyALF6Ee6TlvSlQcc85A" name="state" type="_oA8XELFpEe6TlvSlQcc85A" association="_SYRVwLF6Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_4j34sLF7Ee6TlvSlQcc85A" memberEnd="_4j5G0bF7Ee6TlvSlQcc85A _4j5t4LF7Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4j4fwLF7Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4j5G0LF7Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_4j5G0bF7Ee6TlvSlQcc85A" name="sensors" type="_gHoRcLFpEe6TlvSlQcc85A" aggregation="composite" association="_4j34sLF7Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_4j5t4LF7Ee6TlvSlQcc85A" name="distracted driving rts" type="_YYkiwLFjEe6TlvSlQcc85A" association="_4j34sLF7Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_5hSjMLF7Ee6TlvSlQcc85A" memberEnd="_5hSjM7F7Ee6TlvSlQcc85A _5hTKQLF7Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5hSjMbF7Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5hSjMrF7Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_5hSjM7F7Ee6TlvSlQcc85A" name="task modo" type="_CGZrwLFkEe6TlvSlQcc85A" aggregation="composite" association="_5hSjMLF7Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_5hTKQLF7Ee6TlvSlQcc85A" name="sensors" type="_gHoRcLFpEe6TlvSlQcc85A" association="_5hSjMLF7Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_7FUhwLF7Ee6TlvSlQcc85A" memberEnd="_7FVv4rF7Ee6TlvSlQcc85A _7FWW8LF7Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7FVv4LF7Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7FVv4bF7Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_7FVv4rF7Ee6TlvSlQcc85A" name="task volante" type="_-yqqILFjEe6TlvSlQcc85A" aggregation="composite" association="_7FUhwLF7Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_7FWW8LF7Ee6TlvSlQcc85A" type="_5hSjMLF7Ee6TlvSlQcc85A" association="_7FUhwLF7Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_95MXkLF7Ee6TlvSlQcc85A" memberEnd="_95NlsbF7Ee6TlvSlQcc85A _95NlsrF7Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_95M-oLF7Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_95NlsLF7Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_95NlsbF7Ee6TlvSlQcc85A" name="task distancia" type="_6R2KULFjEe6TlvSlQcc85A" aggregation="composite" association="_95MXkLF7Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_95NlsrF7Ee6TlvSlQcc85A" type="_5hSjMLF7Ee6TlvSlQcc85A" association="_95MXkLF7Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_CSprILF8Ee6TlvSlQcc85A" memberEnd="_CSq5QLF8Ee6TlvSlQcc85A _CSq5QbF8Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CSqSMLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CSqSMbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_CSq5QLF8Ee6TlvSlQcc85A" name="task cabeza" type="_9e-0sLFjEe6TlvSlQcc85A" aggregation="composite" association="_CSprILF8Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_CSq5QbF8Ee6TlvSlQcc85A" type="_5hSjMLF7Ee6TlvSlQcc85A" association="_CSprILF8Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_Ii9yoLF8Ee6TlvSlQcc85A" memberEnd="_Ii9yo7F8Ee6TlvSlQcc85A _Ii-ZsLF8Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ii9yobF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Ii9yorF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Ii9yo7F8Ee6TlvSlQcc85A" name="actuators" type="_XjIg0LFpEe6TlvSlQcc85A" aggregation="composite" association="_Ii9yoLF8Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Ii-ZsLF8Ee6TlvSlQcc85A" name="distracted driving rts" type="_YYkiwLFjEe6TlvSlQcc85A" association="_Ii9yoLF8Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_JWYMkLF8Ee6TlvSlQcc85A" memberEnd="_JWYzorF8Ee6TlvSlQcc85A _JWYzo7F8Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JWYzoLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JWYzobF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_JWYzorF8Ee6TlvSlQcc85A" name="task display" type="_-4gzcLFjEe6TlvSlQcc85A" aggregation="composite" association="_JWYMkLF8Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_JWYzo7F8Ee6TlvSlQcc85A" name="actuators" type="_XjIg0LFpEe6TlvSlQcc85A" association="_JWYMkLF8Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_MUC3kLF8Ee6TlvSlQcc85A" memberEnd="_MUEFsrF8Ee6TlvSlQcc85A _MUFT0LF8Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MUEFsLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MUEFsbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_MUEFsrF8Ee6TlvSlQcc85A" type="_JWYMkLF8Ee6TlvSlQcc85A" aggregation="composite" association="_MUC3kLF8Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_MUFT0LF8Ee6TlvSlQcc85A" name="task riesgos" type="_-2Sl4LFjEe6TlvSlQcc85A" association="_MUC3kLF8Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_SPBBMLF8Ee6TlvSlQcc85A" memberEnd="_SPBoQrF8Ee6TlvSlQcc85A _SPBoQ7F8Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SPBoQLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SPBoQbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_SPBoQrF8Ee6TlvSlQcc85A" name="state" type="_oA8XELFpEe6TlvSlQcc85A" aggregation="composite" association="_SPBBMLF8Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_SPBoQ7F8Ee6TlvSlQcc85A" type="_40P-YLF4Ee6TlvSlQcc85A" association="_SPBBMLF8Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_UhnV8LF8Ee6TlvSlQcc85A" memberEnd="_Uhn9ArF8Ee6TlvSlQcc85A _Uhn9A7F8Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Uhn9ALF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Uhn9AbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Uhn9ArF8Ee6TlvSlQcc85A" name="devices" type="_Nf4TMLFpEe6TlvSlQcc85A" aggregation="composite" association="_UhnV8LF8Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Uhn9A7F8Ee6TlvSlQcc85A" type="_SPBBMLF8Ee6TlvSlQcc85A" association="_UhnV8LF8Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_WdxgoLF8Ee6TlvSlQcc85A" memberEnd="_WdyuwrF8Ee6TlvSlQcc85A _Wdz84LF8Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WdyuwLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WdyuwbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_WdyuwrF8Ee6TlvSlQcc85A" name="protected controlador modo" type="_J_wl8LFqEe6TlvSlQcc85A" aggregation="composite" association="_WdxgoLF8Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Wdz84LF8Ee6TlvSlQcc85A" name="state" type="_oA8XELFpEe6TlvSlQcc85A" association="_WdxgoLF8Ee6TlvSlQcc85A"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_X3Xw0LF8Ee6TlvSlQcc85A" memberEnd="_X3Y-8rF8Ee6TlvSlQcc85A _X3a0ILF8Ee6TlvSlQcc85A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_X3Y-8LF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_X3Y-8bF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_X3Y-8rF8Ee6TlvSlQcc85A" name="protected sintomas" type="_J9ptILFqEe6TlvSlQcc85A" aggregation="composite" association="_X3Xw0LF8Ee6TlvSlQcc85A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_X3a0ILF8Ee6TlvSlQcc85A" name="state" type="_oA8XELFpEe6TlvSlQcc85A" association="_X3Xw0LF8Ee6TlvSlQcc85A"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Shk7YLF9Ee6TlvSlQcc85A" name="DistractedDrivingRTS_BDD">
+        <packagedElement xmi:type="uml:Association" xmi:id="_FWo9YLF4Ee6TlvSlQcc85A" memberEnd="_FWtO0LF4Ee6TlvSlQcc85A _FWt14LF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FWsAsLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FWsAsbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_FWtO0LF4Ee6TlvSlQcc85A" name="giroscopio" type="_exo8oLFuEe6TlvSlQcc85A" aggregation="composite" association="_FWo9YLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_FWt14LF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_FWo9YLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_L26McLF4Ee6TlvSlQcc85A" memberEnd="_L26Mc7F4Ee6TlvSlQcc85A _L26zgLF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L26McbF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L26McrF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_L26Mc7F4Ee6TlvSlQcc85A" name="luces de aviso" type="_xRPEcLFuEe6TlvSlQcc85A" aggregation="composite" association="_L26McLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_L26zgLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_L26McLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_YyQBgLF4Ee6TlvSlQcc85A" memberEnd="_YyRPorF4Ee6TlvSlQcc85A _YyR2sLF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YyRPoLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YyRPobF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_YyRPorF4Ee6TlvSlQcc85A" name="giro del volante" type="_iaPbALFuEe6TlvSlQcc85A" aggregation="composite" association="_YyQBgLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_YyR2sLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_YyQBgLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_aUzZYLF4Ee6TlvSlQcc85A" memberEnd="_aU0ngbF4Ee6TlvSlQcc85A _aU1OkLF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aU0AcLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aU0ngLF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_aU0ngbF4Ee6TlvSlQcc85A" name="display" type="_zrzCYLFuEe6TlvSlQcc85A" aggregation="composite" association="_aUzZYLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_aU1OkLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_aUzZYLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_dYQjULF4Ee6TlvSlQcc85A" memberEnd="_dYRxcrF4Ee6TlvSlQcc85A _dYSYgLF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dYRxcLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dYRxcbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_dYRxcrF4Ee6TlvSlQcc85A" name="freno" type="_3eKgwLFuEe6TlvSlQcc85A" aggregation="composite" association="_dYQjULF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_dYSYgLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_dYQjULF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_fTbPgLF4Ee6TlvSlQcc85A" memberEnd="_fTcdorF4Ee6TlvSlQcc85A _fTdEsLF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fTcdoLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fTcdobF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_fTcdorF4Ee6TlvSlQcc85A" name="sensor de distancia" type="_tbb3kLFuEe6TlvSlQcc85A" aggregation="composite" association="_fTbPgLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_fTdEsLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_fTbPgLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_igiEsLF4Ee6TlvSlQcc85A" memberEnd="_igirwrF4Ee6TlvSlQcc85A _igjS0LF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_igirwLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_igirwbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_igirwrF4Ee6TlvSlQcc85A" name="acelerómetro 1" type="_7yvUULFuEe6TlvSlQcc85A" aggregation="composite" association="_igiEsLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_igjS0LF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_igiEsLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_kDr5gLF4Ee6TlvSlQcc85A" memberEnd="_kDsgkrF4Ee6TlvSlQcc85A _kDtusLF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kDsgkLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kDsgkbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_kDsgkrF4Ee6TlvSlQcc85A" name="agarre volante" type="_5br9YLFuEe6TlvSlQcc85A" aggregation="composite" association="_kDr5gLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_kDtusLF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_kDr5gLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_sZ7ywLF4Ee6TlvSlQcc85A" memberEnd="_sZ9A4LF4Ee6TlvSlQcc85A _sZ9A4bF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sZ8Z0LF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sZ8Z0bF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_sZ9A4LF4Ee6TlvSlQcc85A" name="velocímetro" type="_pD7r0LFuEe6TlvSlQcc85A" aggregation="composite" association="_sZ7ywLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_sZ9A4bF4Ee6TlvSlQcc85A" type="_kDr5gLF4Ee6TlvSlQcc85A" association="_sZ7ywLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_tUG8ALF4Ee6TlvSlQcc85A" memberEnd="_tUIKIrF4Ee6TlvSlQcc85A _tUIKI7F4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tUIKILF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tUIKIbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_tUIKIrF4Ee6TlvSlQcc85A" name="acelerómetro 2" type="_90xdgLFuEe6TlvSlQcc85A" aggregation="composite" association="_tUG8ALF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_tUIKI7F4Ee6TlvSlQcc85A" type="_kDr5gLF4Ee6TlvSlQcc85A" association="_tUG8ALF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_uFyQkLF4Ee6TlvSlQcc85A" memberEnd="_uFzesrF4Ee6TlvSlQcc85A _uFzes7F4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_uFzesLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_uFzesbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_uFzesrF4Ee6TlvSlQcc85A" name="alarma" type="_1OsYgLFuEe6TlvSlQcc85A" aggregation="composite" association="_uFyQkLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_uFzes7F4Ee6TlvSlQcc85A" type="_kDr5gLF4Ee6TlvSlQcc85A" association="_uFyQkLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_40P-YLF4Ee6TlvSlQcc85A" memberEnd="_40QlcrF4Ee6TlvSlQcc85A _40RMgLF4Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_40QlcLF4Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_40QlcbF4Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_40QlcrF4Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" aggregation="composite" association="_40P-YLF4Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_40RMgLF4Ee6TlvSlQcc85A" name="distracted driving rts" type="_YYkiwLFjEe6TlvSlQcc85A" association="_40P-YLF4Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_zJMDkLF5Ee6TlvSlQcc85A" memberEnd="_zJMqorF5Ee6TlvSlQcc85A _zJNRsLF5Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zJMqoLF5Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zJMqobF5Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_zJMqorF5Ee6TlvSlQcc85A" name="control" type="_eYZ5ELF1Ee6TlvSlQcc85A" association="_zJMDkLF5Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_zJNRsLF5Ee6TlvSlQcc85A" name="devices" type="_Nf4TMLFpEe6TlvSlQcc85A" association="_zJMDkLF5Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_SYRVwLF6Ee6TlvSlQcc85A" memberEnd="_SYSj4rF6Ee6TlvSlQcc85A _SYTyALF6Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SYSj4LF6Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SYSj4bF6Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_SYSj4rF6Ee6TlvSlQcc85A" name="protected medidas" type="_H0x8ILFqEe6TlvSlQcc85A" aggregation="composite" association="_SYRVwLF6Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_SYTyALF6Ee6TlvSlQcc85A" name="state" type="_oA8XELFpEe6TlvSlQcc85A" association="_SYRVwLF6Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_4j34sLF7Ee6TlvSlQcc85A" memberEnd="_4j5G0bF7Ee6TlvSlQcc85A _4j5t4LF7Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4j4fwLF7Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4j5G0LF7Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_4j5G0bF7Ee6TlvSlQcc85A" name="sensors" type="_gHoRcLFpEe6TlvSlQcc85A" aggregation="composite" association="_4j34sLF7Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_4j5t4LF7Ee6TlvSlQcc85A" name="distracted driving rts" type="_YYkiwLFjEe6TlvSlQcc85A" association="_4j34sLF7Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_5hSjMLF7Ee6TlvSlQcc85A" memberEnd="_5hSjM7F7Ee6TlvSlQcc85A _5hTKQLF7Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5hSjMbF7Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5hSjMrF7Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_5hSjM7F7Ee6TlvSlQcc85A" name="task modo" type="_CGZrwLFkEe6TlvSlQcc85A" aggregation="composite" association="_5hSjMLF7Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_5hTKQLF7Ee6TlvSlQcc85A" name="sensors" type="_gHoRcLFpEe6TlvSlQcc85A" association="_5hSjMLF7Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_7FUhwLF7Ee6TlvSlQcc85A" memberEnd="_7FVv4rF7Ee6TlvSlQcc85A _7FWW8LF7Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7FVv4LF7Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7FVv4bF7Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_7FVv4rF7Ee6TlvSlQcc85A" name="task volante" type="_-yqqILFjEe6TlvSlQcc85A" aggregation="composite" association="_7FUhwLF7Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_7FWW8LF7Ee6TlvSlQcc85A" type="_5hSjMLF7Ee6TlvSlQcc85A" association="_7FUhwLF7Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_95MXkLF7Ee6TlvSlQcc85A" memberEnd="_95NlsbF7Ee6TlvSlQcc85A _95NlsrF7Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_95M-oLF7Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_95NlsLF7Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_95NlsbF7Ee6TlvSlQcc85A" name="task distancia" type="_6R2KULFjEe6TlvSlQcc85A" aggregation="composite" association="_95MXkLF7Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_95NlsrF7Ee6TlvSlQcc85A" type="_5hSjMLF7Ee6TlvSlQcc85A" association="_95MXkLF7Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_CSprILF8Ee6TlvSlQcc85A" memberEnd="_CSq5QLF8Ee6TlvSlQcc85A _CSq5QbF8Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CSqSMLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CSqSMbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_CSq5QLF8Ee6TlvSlQcc85A" name="task cabeza" type="_9e-0sLFjEe6TlvSlQcc85A" aggregation="composite" association="_CSprILF8Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_CSq5QbF8Ee6TlvSlQcc85A" type="_5hSjMLF7Ee6TlvSlQcc85A" association="_CSprILF8Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_Ii9yoLF8Ee6TlvSlQcc85A" memberEnd="_Ii9yo7F8Ee6TlvSlQcc85A _Ii-ZsLF8Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ii9yobF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Ii9yorF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_Ii9yo7F8Ee6TlvSlQcc85A" name="actuators" type="_XjIg0LFpEe6TlvSlQcc85A" aggregation="composite" association="_Ii9yoLF8Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_Ii-ZsLF8Ee6TlvSlQcc85A" name="distracted driving rts" type="_YYkiwLFjEe6TlvSlQcc85A" association="_Ii9yoLF8Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_JWYMkLF8Ee6TlvSlQcc85A" memberEnd="_JWYzorF8Ee6TlvSlQcc85A _JWYzo7F8Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JWYzoLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JWYzobF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_JWYzorF8Ee6TlvSlQcc85A" name="task display" type="_-4gzcLFjEe6TlvSlQcc85A" aggregation="composite" association="_JWYMkLF8Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_JWYzo7F8Ee6TlvSlQcc85A" name="actuators" type="_XjIg0LFpEe6TlvSlQcc85A" association="_JWYMkLF8Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_MUC3kLF8Ee6TlvSlQcc85A" memberEnd="_MUEFsrF8Ee6TlvSlQcc85A _MUFT0LF8Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MUEFsLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MUEFsbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_MUEFsrF8Ee6TlvSlQcc85A" type="_JWYMkLF8Ee6TlvSlQcc85A" aggregation="composite" association="_MUC3kLF8Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_MUFT0LF8Ee6TlvSlQcc85A" name="task riesgos" type="_-2Sl4LFjEe6TlvSlQcc85A" association="_MUC3kLF8Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_SPBBMLF8Ee6TlvSlQcc85A" memberEnd="_SPBoQrF8Ee6TlvSlQcc85A _SPBoQ7F8Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SPBoQLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SPBoQbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_SPBoQrF8Ee6TlvSlQcc85A" name="state" type="_oA8XELFpEe6TlvSlQcc85A" aggregation="composite" association="_SPBBMLF8Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_SPBoQ7F8Ee6TlvSlQcc85A" type="_40P-YLF4Ee6TlvSlQcc85A" association="_SPBBMLF8Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_UhnV8LF8Ee6TlvSlQcc85A" memberEnd="_Uhn9ArF8Ee6TlvSlQcc85A _Uhn9A7F8Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Uhn9ALF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Uhn9AbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_Uhn9ArF8Ee6TlvSlQcc85A" name="devices" type="_Nf4TMLFpEe6TlvSlQcc85A" aggregation="composite" association="_UhnV8LF8Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_Uhn9A7F8Ee6TlvSlQcc85A" type="_SPBBMLF8Ee6TlvSlQcc85A" association="_UhnV8LF8Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_WdxgoLF8Ee6TlvSlQcc85A" memberEnd="_WdyuwrF8Ee6TlvSlQcc85A _Wdz84LF8Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WdyuwLF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WdyuwbF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_WdyuwrF8Ee6TlvSlQcc85A" name="protected controlador modo" type="_J_wl8LFqEe6TlvSlQcc85A" aggregation="composite" association="_WdxgoLF8Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_Wdz84LF8Ee6TlvSlQcc85A" name="state" type="_oA8XELFpEe6TlvSlQcc85A" association="_WdxgoLF8Ee6TlvSlQcc85A"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_X3Xw0LF8Ee6TlvSlQcc85A" memberEnd="_X3Y-8rF8Ee6TlvSlQcc85A _X3a0ILF8Ee6TlvSlQcc85A">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_X3Y-8LF8Ee6TlvSlQcc85A" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_X3Y-8bF8Ee6TlvSlQcc85A" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_X3Y-8rF8Ee6TlvSlQcc85A" name="protected sintomas" type="_J9ptILFqEe6TlvSlQcc85A" aggregation="composite" association="_X3Xw0LF8Ee6TlvSlQcc85A"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_X3a0ILF8Ee6TlvSlQcc85A" name="state" type="_oA8XELFpEe6TlvSlQcc85A" association="_X3Xw0LF8Ee6TlvSlQcc85A"/>
+        </packagedElement>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_H2IrMLFjEe6TlvSlQcc85A" name="Blocks">
@@ -344,6 +298,54 @@
       <packagedElement xmi:type="uml:Class" xmi:id="_5br9YLFuEe6TlvSlQcc85A" name="Agarre Volante"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_7yvUULFuEe6TlvSlQcc85A" name="Acelerómetro 1"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_90xdgLFuEe6TlvSlQcc85A" name="Acelerómetro 2"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_eYZ5ELF1Ee6TlvSlQcc85A" name="Control">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_h5kSsLF1Ee6TlvSlQcc85A" name="Inicializar_dispositivos">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_zaqK4LF1Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_0uoUMLF1Ee6TlvSlQcc85A" name="Leer_Sensores">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_7UyI0LF1Ee6TlvSlQcc85A" name="Sensores" type="_6zfZoLF1Ee6TlvSlQcc85A" direction="out"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_8PlkMLF1Ee6TlvSlQcc85A" name="Leer_Sensor">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_AV__8LF2Ee6TlvSlQcc85A" name="pin" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_J-rxcLF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Ay27ELF2Ee6TlvSlQcc85A" name="Leer_Pulsador">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_GK9BILF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_KbGAoLF2Ee6TlvSlQcc85A" name="Poner_Led_Rojo">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UaC9ELF2Ee6TlvSlQcc85A" name="Led_Rojo" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_WmaG8LF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_YCbZALF2Ee6TlvSlQcc85A" name="Poner_Led_Verde">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_dC0wwLF2Ee6TlvSlQcc85A" name="Led_Verde" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fDHNgLF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ftUBELF2Ee6TlvSlQcc85A" name="Sensor_Infrarrojos">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_lE-CQLF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_lhN5YLF2Ee6TlvSlQcc85A" name="Activar_Trigger">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_p5jLkLF2Ee6TlvSlQcc85A" name="Valor_Trig" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tpSMsLF2Ee6TlvSlQcc85A" name="Leer_Echo">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_xMw6gLF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_y9OLgLF2Ee6TlvSlQcc85A" name="Cerrar">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_2URm4LF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_5u0bILF2Ee6TlvSlQcc85A" name="Girar_Motor">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_9loUoLF2Ee6TlvSlQcc85A" name="Giro" type="_xL0UwLF1Ee6TlvSlQcc85A"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="___oR4LF2Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_AYW68LF3Ee6TlvSlQcc85A" name="Leer_X_Giroscopo">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_FkqAsLF3Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GAWeMLF3Ee6TlvSlQcc85A" name="Leer_Y_Giroscopo">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ohk4YLF3Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_QTm2sLF3Ee6TlvSlQcc85A" name="Esp_Int">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TnfCQLF3Ee6TlvSlQcc85A" name="Return" type="_xL0UwLF1Ee6TlvSlQcc85A" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_eTe90LFqEe6TlvSlQcc85A" name="Types">
       <packagedElement xmi:type="uml:DataType" xmi:id="_0LSXkLFqEe6TlvSlQcc85A" name="Distancia_Samples_Type"/>

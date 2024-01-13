@@ -1601,7 +1601,7 @@
   <styles xmi:type="notation:StringValueStyle" xmi:id="_OQNysbFjEe6TlvSlQcc85A" name="diagram_compatibility_version" stringValue="1.4.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_OQNysrFjEe6TlvSlQcc85A"/>
   <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_OQNys7FjEe6TlvSlQcc85A" diagramKindId="org.eclipse.papyrus.sysml16.diagram.blockdefinition">
-    <owner xmi:type="uml:Package" href="DistractedDrivingRTSModel.uml#_AIGBcLFjEe6TlvSlQcc85A"/>
+    <owner xmi:type="uml:Package" href="DistractedDrivingRTSModel.uml#_Shk7YLF9Ee6TlvSlQcc85A"/>
   </styles>
   <element xmi:type="uml:Package" href="DistractedDrivingRTSModel.uml#_AIGBcLFjEe6TlvSlQcc85A"/>
   <edges xmi:type="notation:Connector" xmi:id="_YZcFcLFjEe6TlvSlQcc85A" type="StereotypeCommentLink" source="_YYvh4LFjEe6TlvSlQcc85A" target="_YZbeZbFjEe6TlvSlQcc85A">
